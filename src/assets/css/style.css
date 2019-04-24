@@ -5444,3 +5444,6 @@ input:focus {
 #appointmentModal{
   overflow-y: scroll;
 }
+.header-compay-name-dropdown .btn fa{
+  font-size: 14px;
+}
