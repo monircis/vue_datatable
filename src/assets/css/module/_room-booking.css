@@ -1,0 +1,94 @@
+.room-booking-content-wrap {
+  display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+  justify-content: space-between; }
+  .room-booking-content-wrap .room-booking-main-content {
+    width: calc(100% - 0px); }
+
+.room-booking-category-wrapper {
+  margin-left: -5px;
+  margin-right: -5px;
+  display: flex;
+  flex-wrap: wrap;
+  height: calc(100vh - 130px); }
+  .room-booking-category-wrapper .room-booking-category {
+    height: 100%; }
+  .room-booking-category-wrapper .room-booking-category-inner {
+    height: calc(100vh - 130px); }
+    .room-booking-category-wrapper .room-booking-category-inner table thead tr th {
+      text-align: center;
+      padding: 2px !important; }
+    .room-booking-category-wrapper .room-booking-category-inner table tbody tr th {
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-top: 5%;
+      text-align: center; }
+    .room-booking-category-wrapper .room-booking-category-inner table tbody tr td {
+      position: relative;
+      padding: 0px;
+      text-align: center; }
+      .room-booking-category-wrapper .room-booking-category-inner table tbody tr td span {
+        text-align: center;
+        display: block; }
+        .room-booking-category-wrapper .room-booking-category-inner table tbody tr td span .number {
+          font-size: 12px;
+          text-align: center;
+          padding-top: 0px 2px;
+          font-weight: 600; }
+      .room-booking-category-wrapper .room-booking-category-inner table tbody tr td .base-ac {
+        padding: 0px 3px;
+        font-size: 10px; }
+      .room-booking-category-wrapper .room-booking-category-inner table tbody tr td .base-non-ac {
+        padding: 0px 2px;
+        font-size: 10px; }
+  .room-booking-category-wrapper .fileter-div {
+    display: inline-flex; }
+    .room-booking-category-wrapper .fileter-div .form-group-select {
+      margin-right: 30px; }
+  .room-booking-category-wrapper .table-year-month {
+    width: 200px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: -50px; }
+    .room-booking-category-wrapper .table-year-month p {
+      margin-bottom: 0px;
+      font-size: 16px; }
+  .room-booking-category-wrapper .room-booking-category-outer {
+    width: 33.3333333%;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: inherit; }
+  .room-booking-category-wrapper--4 .room-booking-category-outer {
+    width: 100%;
+    height: auto; }
+    .room-booking-category-wrapper--4 .room-booking-category-outer .room-booking-category-inner {
+      height: 82%; }
+    .room-booking-category-wrapper--4 .room-booking-category-outer .single-room-wrapper {
+      width: 25%; }
+
+.room-booking-category-outer {
+  height: 100%; }
+
+.room-booking-category {
+  width: 100%; }
+  .room-booking-category .single-booking-room {
+    height: 100%;
+    cursor: pointer; }
+
+.room-booking-category-inner {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%; }
+  .room-booking-category-inner .single-room-wrapper {
+    float: left;
+    width: 33.33333333%;
+    padding: 2px; }
+  .room-booking-category-inner--less5 .single-room-wrapper {
+    width: 50%; }
+
+@media (min-width: 1700px) {
+  .room-booking-category-wrapper--4 .room-booking-category-outer .single-room-wrapper {
+    width: 20%; } }

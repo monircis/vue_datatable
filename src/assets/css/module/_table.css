@@ -1,0 +1,8 @@
+.table-content .card {
+  word-wrap: break-word; }
+  .table-content .card .card-body .dataTable_filter label {
+    white-space: nowrap;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    font-size: 0.875rem !important; }
