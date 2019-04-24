@@ -67,7 +67,6 @@
     name: 'app',
      data() {
        return{
-         doctorID : '',
          isLoggedIn: true,
          isLoading: false
        }

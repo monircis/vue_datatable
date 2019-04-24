@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import serverlists from '@/components/server_lists';
-import single from '@/components/single';
+import dropletdetails from '@/components/droplet_details';
 import VueSweetalert2 from 'vue-sweetalert2';
 Vue.use(VueSweetalert2);
 Vue.use(Router);
@@ -15,9 +15,9 @@ export default new Router({
       root:  '/'
     },
     {
-      path: '/single/:id',
-      name: 'single',
-      component: single,
+      path: '/droplet-details/:id',
+      name: 'droplet-details',
+      component: dropletdetails,
       root:  '/'
     }
   ]

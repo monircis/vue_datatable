@@ -37,15 +37,6 @@ Vue.use(Toasted, {
 });
 Vue.use(VueLodash);
 /* eslint-disable no-new */
-router.beforeEach((to, from, next) => {
-  if (to.path != '/login') {
-    let token = localStorage.getItem("token");
-    if (Vue._.isEmpty(token)) {
-      return next('/login');
-    }
-  }
-  next();
-});
 
 new Vue({
   el: '#app',

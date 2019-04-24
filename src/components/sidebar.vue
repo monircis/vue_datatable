@@ -15,24 +15,8 @@
           <li>
             <router-link v-bind:to="'/'" class="active dashboard" >
               <i class="icon-icommon-accounting sidebar-menu__icon"></i>
-              <span class="menu-text menu-text__overwrite">Dashboard</span>
+              <span class="menu-text menu-text__overwrite">Droplets</span>
             </router-link>
-          </li>
-          <li>
-           <router-link v-bind:to="'/'"   >
-             <i class="icon-icommon-hrm sidebar-menu__icon"></i>
-              <span class="menu-text menu-text__overwrite">Patients</span>
-            </router-link>
-          </li>
-          <li>
-
-           <router-link v-bind:to="'/createnew'" class="||  has-submenu" >
-              <i class="icon-icommon-hrm sidebar-menu__icon"></i>
-              <span class="menu-text menu-text__overwrite">New Patient</span>
-            </router-link>
-          </li>
-          <li>
-
           </li>
 
         </ul>
