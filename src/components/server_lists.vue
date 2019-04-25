@@ -7,7 +7,7 @@
       <table class="table table-bordered">
         <thead>
         <tr>
-          <th>#</th>
+          <th>Server</th>
           <th>Server Name</th>
           <th>Server ID</th>
           <th>Status</th>
@@ -15,12 +15,21 @@
         </tr>
         </thead>
         <tbody>
-        <tr  v-for="(droplet ,i) in droplets">
-          <td class="text-center" width="50px"> <img class="img-rounded" src="@/assets/images/logo-windows.jpg" /></td>
+        <tr  v-for="(droplet ,index) in droplets">
+          <td class="text-center" width="50px"> <img class=" " src="@/assets/images/windows-8.png" width="15px" /></td>
           <td>{{ droplet.name }}</td>
           <td>{{ droplet.id}}</td>
-          <td width="100px"><button type="button" class="btn btn-sm base-bg">ON/OFF</button></td>
-          <td width="120px"><router-link class="btn btn-success btn-sm" v-bind:to="'droplet-details/'+droplet.id" >Configure</router-link></td>
+          <td width="110px">
+            <div class="switch">
+              <label>
+                Off
+                <input type="checkbox" checked="checked" v-model="droplet.id"  @change="updateStatus(index)">
+                <span class="lever"></span> On
+              </label>
+            </div>
+            <!--<button type="button" class="btn btn-sm  btn-info waves-effect waves-light">ON/OFF</button>-->
+          </td>
+          <td width="120px"><router-link class="btn btn-configure btn-sm" v-bind:to="'droplet-details/'+droplet.id" >Configure</router-link></td>
 
         </tr>
         </tbody>
@@ -35,6 +44,7 @@
   export default {
     data() {
          return{
+           serverStatus:'',
            droplets: [],
       }
     },
@@ -57,6 +67,9 @@
             //end loading
             //console.log(response);
           });
+      },
+      updateStatus: function() {
+        alert();
       }
     },
     watch: {
