@@ -50,6 +50,7 @@
     },
     created: function() {
       this.loadApiData();
+      this.dropletDetails();
     },
     methods: {
       loadApiData: function() {

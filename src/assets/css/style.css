@@ -5486,3 +5486,6 @@ input:focus {
   background-color: #a9d4ab;
 }
 
+.form-modal.form-block.dropletarea-full{
+  width: 100%;
+}
