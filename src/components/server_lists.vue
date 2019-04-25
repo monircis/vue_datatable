@@ -16,7 +16,7 @@
         </thead>
         <tbody>
         <tr  v-for="(droplet ,index) in droplets">
-          <td class="text-center" width="50px"> <img class=" " src="@/assets/images/windows-8.png" width="15px" /></td>
+          <td class="text-center" width="50px"><img class=" " src="@/assets/images/windows-8.png" width="15px"/></td>
           <td>{{ droplet.name }}</td>
           <td>{{ droplet.id}}</td>
           <td width="110px">
@@ -72,9 +72,7 @@
       updateStatus: function() {
         //alert();
       }
-    },
-    watch: {
-    },
+    }
   };
 </script>
 

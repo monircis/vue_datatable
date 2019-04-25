@@ -1,6 +1,5 @@
-
 <template>
- <div class="sidebar  ">
+  <div class="sidebar  ">
     <div class="sidebar__humbarger" id="sidebar__humbarger">
 					<span>
 					</span>
@@ -13,7 +12,7 @@
       <div class="sidebar-menu">
         <ul class="nav panel-list menu-accordion">
           <li>
-            <router-link v-bind:to="'/'" class="active dashboard" >
+            <router-link v-bind:to="'/'" class="active dashboard">
               <i class="icon-icommon-accounting sidebar-menu__icon"></i>
               <span class="menu-text menu-text__overwrite">Droplets</span>
             </router-link>

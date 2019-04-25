@@ -3,7 +3,6 @@
     <div class="row">
       <div class="col-md-8">
         <div class="row">
-
           <div class="col-md-6 mb15" v-for="(event ,index) in dropletDetail.events">
             <div class="form-modal form-block width-auto">
               <div class="tp-area">
@@ -14,25 +13,24 @@
               </code>
             </div>
           </div>
-
         </div>
-
       </div>
       <div class="col-md-4">
         <div class="form-modal form-block width-auto border5px">
           <div class="tp-area">
-            <h3 class="pull-left"><img class=" " src="@/assets/images/droplet.png" width="16px" /> Droplet Information</h3>
+            <h3 class="pull-left"><img class=" " src="@/assets/images/droplet.png" width="16px"/> Droplet Information
+            </h3>
           </div>
           <div class="table-responsive droplets mt15">
             <table class="table table-bordered">
               <!--<thead>-->
               <!--<tr>-->
-                <!--<th>-->
-                  <!--Server-->
-                <!--</th>-->
-                <!--<th>-->
-                  <!--Server Name-->
-                <!--</th>-->
+              <!--<th>-->
+              <!--Server-->
+              <!--</th>-->
+              <!--<th>-->
+              <!--Server Name-->
+              <!--</th>-->
 
               <!--</tr>-->
               <!--</thead>-->
@@ -40,19 +38,19 @@
 
               <tr>
                 <td>
-                ID
+                  ID
                 </td>
 
-                <td  class="base-color">
-               {{dropletDetail.id}}
+                <td class="base-color">
+                  {{dropletDetail.id}}
                 </td>
               </tr>
               <tr>
                 <td>
-               Name
+                  Name
                 </td>
 
-                <td  class="base-color">
+                <td class="base-color">
                   {{dropletDetail.name}}
                 </td>
               </tr>
@@ -61,7 +59,7 @@
                   RAM
                 </td>
 
-                <td  class="base-color">
+                <td class="base-color">
                   {{dropletDetail.ram}}
                 </td>
               </tr>
@@ -70,7 +68,7 @@
                   CPUS
                 </td>
 
-                <td  class="base-color">
+                <td class="base-color">
                   {{dropletDetail.cpus}}
                 </td>
               </tr>
@@ -79,7 +77,7 @@
                   GPU
                 </td>
 
-                <td  class="base-color">
+                <td class="base-color">
                   {{dropletDetail.gpu}}
                 </td>
               </tr>
@@ -88,7 +86,7 @@
                   Storage Total
                 </td>
 
-                <td  class="base-color">
+                <td class="base-color">
                   {{dropletDetail.storageTotal}}
                 </td>
               </tr>
@@ -97,25 +95,25 @@
                   Storage Total
                 </td>
 
-                <td  class="base-color">
+                <td class="base-color">
                   {{dropletDetail.storageTotal}}
                 </td>
               </tr>
               <tr>
                 <td>
-                  Storage  Used
+                  Storage Used
                 </td>
 
-                <td  class="base-color">
+                <td class="base-color">
                   {{dropletDetail.storageUsed}}
                 </td>
               </tr>
               <tr>
                 <td>
-                     Usage Rate
+                  Usage Rate
                 </td>
 
-                <td  class="base-color">
+                <td class="base-color">
                   {{dropletDetail.usageRate}}
                 </td>
               </tr>
@@ -123,7 +121,7 @@
                 <td>
                   Shutdown Timeout In Hours
                 </td>
-                <td  class="base-color">
+                <td class="base-color">
                   {{dropletDetail.shutdownTimeoutInHours}}
                 </td>
               </tr>
@@ -132,7 +130,7 @@
                   shutdown Timeout Forces
                 </td>
 
-                <td  class="base-color">
+                <td class="base-color">
                   {{dropletDetail.shutdownTimeoutForces}}
                 </td>
               </tr>
@@ -141,20 +139,13 @@
             </table>
           </div>
           <!--<code>-->
-            <!--{{dropletDetail}}-->
+          <!--{{dropletDetail}}-->
           <!--</code>-->
         </div>
 
       </div>
     </div>
-    <!--<div class="form-modal form-block dropletarea-full">-->
-      <!--<div class="tp-area">-->
-        <!--<h3 class="pull-left">Droplet Deatil  <b>ID: {{ $route.params.id }}</b></h3>-->
-      <!--</div>-->
-      <!--<code>-->
-        <!--{{dropletDetail}}-->
-      <!--</code>-->
-    <!--</div>-->
+
   </div>
 </template>
 
@@ -162,28 +153,29 @@
   const $ = require('jquery');
   window.$ = $;
   //click a date and  catch  the date
-  $(function() {
+  $(function () {
     //alert();
   });
 
   import axios from 'axios';
+
   export default {
     data() {
-         return{
-           dropletDetail:{}
+      return {
+        dropletDetail: {}
       }
     },
     mounted: function () {
-       this.dropletDetails();
+      this.dropletDetails();
     },
     methods: {
-      dropletDetails: function() {
+      dropletDetails: function () {
         let vm = this;
         //start loading
         vm.$parent.startLoading();
-        let  droplet_id =this.$route.params.id;
-        axios.get("https://command-center-vm-api.herokuapp.com/api/vms/"+droplet_id)
-          .then(function(response) {
+        let droplet_id = this.$route.params.id;
+        axios.get("https://command-center-vm-api.herokuapp.com/api/vms/" + droplet_id)
+          .then(function (response) {
             console.log(response.data);
             vm.dropletDetail = response.data.data;
             //end loading
