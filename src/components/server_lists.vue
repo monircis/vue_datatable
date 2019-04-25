@@ -23,7 +23,7 @@
             <div class="switch">
               <label>
                 Off
-                <input type="checkbox" checked="checked" v-model="droplet.id"  @change="updateStatus(index)">
+                <input type="checkbox" checked="checked"    @change="updateStatus(index)">
                 <span class="lever"></span> On
               </label>
             </div>
@@ -70,7 +70,7 @@
           });
       },
       updateStatus: function() {
-        alert();
+        //alert();
       }
     },
     watch: {

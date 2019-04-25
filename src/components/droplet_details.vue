@@ -3,23 +3,25 @@
     <div class="row">
       <div class="col-md-8">
         <div class="row">
-          <div class="col-md-6">
+
+          <div class="col-md-6 mb15" v-for="(event ,index) in dropletDetail.events">
             <div class="form-modal form-block width-auto">
               <div class="tp-area">
                 <h3 class="pull-left">Single Droplet</h3>
               </div>
               <code>
-                {{dropletDetail.events}}
+                {{event}}
               </code>
             </div>
           </div>
+
         </div>
 
       </div>
       <div class="col-md-4">
-        <div class="form-modal form-block width-auto">
+        <div class="form-modal form-block width-auto border5px">
           <div class="tp-area">
-            <h3 class="pull-left">Droplet Information</h3>
+            <h3 class="pull-left"><img class=" " src="@/assets/images/droplet.png" width="16px" /> Droplet Information</h3>
           </div>
           <div class="table-responsive droplets mt15">
             <table class="table table-bordered">
@@ -37,66 +39,110 @@
               <tbody>
 
               <tr>
-                <td class="text-center" width="50px">
+                <td>
                 ID
                 </td>
 
-                <td width="120px">
+                <td  class="base-color">
                {{dropletDetail.id}}
                 </td>
               </tr>
               <tr>
-                <td class="text-center" width="50px">
+                <td>
                Name
                 </td>
 
-                <td width="120px">
+                <td  class="base-color">
                   {{dropletDetail.name}}
                 </td>
               </tr>
               <tr>
-                <td class="text-center" width="50px">
-                  OS
+                <td>
+                  RAM
                 </td>
 
-                <td width="120px">
-                  {{dropletDetail.os}}
+                <td  class="base-color">
+                  {{dropletDetail.ram}}
                 </td>
               </tr>
               <tr>
-                <td class="text-center" width="50px">
-                  Distro
+                <td>
+                  CPUS
                 </td>
 
-                <td width="120px">
-                  <!--{{dropletDetail.distro}}-->
+                <td  class="base-color">
+                  {{dropletDetail.cpus}}
                 </td>
               </tr>
               <tr>
-                <td class="text-center" width="50px">
-                  major
+                <td>
+                  GPU
                 </td>
 
-                <td width="120px">
-                  {{dropletDetail.major}}
+                <td  class="base-color">
+                  {{dropletDetail.gpu}}
                 </td>
               </tr>
               <tr>
-                <td class="text-center" width="50px">
-                  minor
+                <td>
+                  Storage Total
                 </td>
 
-                <td width="120px">
-                  {{dropletDetail.minor}}
+                <td  class="base-color">
+                  {{dropletDetail.storageTotal}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Storage Total
+                </td>
+
+                <td  class="base-color">
+                  {{dropletDetail.storageTotal}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Storage  Used
+                </td>
+
+                <td  class="base-color">
+                  {{dropletDetail.storageUsed}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                     Usage Rate
+                </td>
+
+                <td  class="base-color">
+                  {{dropletDetail.usageRate}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Shutdown Timeout In Hours
+                </td>
+                <td  class="base-color">
+                  {{dropletDetail.shutdownTimeoutInHours}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  shutdown Timeout Forces
+                </td>
+
+                <td  class="base-color">
+                  {{dropletDetail.shutdownTimeoutForces}}
                 </td>
               </tr>
 
               </tbody>
             </table>
           </div>
-          <code>
-            {{dropletDetail}}
-          </code>
+          <!--<code>-->
+            <!--{{dropletDetail}}-->
+          <!--</code>-->
         </div>
 
       </div>

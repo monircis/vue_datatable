@@ -5465,6 +5465,13 @@ input:focus {
 .form-modal.form-block.dropletarea {
   max-width: 1000px;
 }
+.form-modal.form-block.dropletarea tr:hover{
+   background: #e7f8f0;
+}
+.border5px{
+  border-top: 6px solid #1976d2;
+  border-bottom:  6px solid #1976d2;
+}
 .droplets table td .btn.btn-configure{
   font-weight: bold;
   background: #f5f5f5;
