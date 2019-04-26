@@ -90,15 +90,7 @@
                   {{dropletDetail.storageTotal}}
                 </td>
               </tr>
-              <tr>
-                <td>
-                  Storage Total
-                </td>
 
-                <td class="base-color">
-                  {{dropletDetail.storageTotal}}
-                </td>
-              </tr>
               <tr>
                 <td>
                   Storage Used
