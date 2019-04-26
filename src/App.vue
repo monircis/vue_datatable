@@ -15,7 +15,7 @@
         <div class="row">
           <div class="col-sm-5 col-xs-7 pdt15 pdb15">
             <div class="dropdown header-dropdown header-compay-name-dropdown">
-              <button class="btn base-bg dropdown-toggle" type="button" data-toggle="dropdown"
+              <button class="btn base-bg " type="button"
                       aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-bars pdr10">
                 </i>
@@ -34,10 +34,9 @@
       </div>
     </div>
   </header>
-
    <app-sidebar class="nonprint-area" ></app-sidebar>
   <div class="main-content-outer">
-    <div id="preloader-show" v-if="isLoading">
+    <div id="preloader-show" class="mt50" v-if="isLoading">
       <img  src="@/assets/images/circle-loader.gif" />
     </div>
     <div class="main-content-inner pdt50">

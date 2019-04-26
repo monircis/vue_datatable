@@ -5496,3 +5496,19 @@ input:focus {
 .form-modal.form-block.dropletarea-full{
   width: 100%;
 }
+.width450{
+  width: 100%;
+  max-width: 350px;
+  float: right;
+  position: relative;
+}
+.search-input i{
+  position: absolute;
+  font-size: 20px;
+  left: 3px;
+  top: 2px;
+  color: #0b8cfc;
+}
+.search-input input{
+  padding-left: 25px;
+}

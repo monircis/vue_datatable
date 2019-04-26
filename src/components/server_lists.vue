@@ -2,7 +2,11 @@
   <div class="form-modal form-block dropletarea">
     <div class="tp-area">
       <h3 class="pull-left">Droplet List</h3>
-    </div>
+      <div class="search-input width450">
+        <i class="icon-icommon-search sidebar-menu__icon"></i>
+        <input type="text" class="form-control pull-right  searchbar" placeholder="Search Droplet Using Name or ID" v-model="searchDroplet">
+      </div>
+         </div>
     <div class="table-responsive droplets mt15">
       <table class="table table-bordered">
         <thead>
@@ -44,8 +48,10 @@
   export default {
     data() {
          return{
+           searchDroplet: '',
            serverStatus:'',
            droplets: [],
+           alldroplets: []
       }
     },
     created: function() {
@@ -61,6 +67,7 @@
           .then(function(response) {
              console.log(response.data);
             vm.droplets = response.data.data;
+            vm.alldroplets = response.data.data;
             //end loading
             vm.$parent.endLoading();
           })
@@ -72,7 +79,19 @@
       updateStatus: function() {
         //alert();
       }
-    }
+    },
+    watch: {
+      searchDroplet: function (val) {
+         console.log(val);
+        if (this._.isEmpty(val)) {
+          this.droplets = this.droplets
+        } else {
+          this.droplets = this._.filter(this.alldroplets, function (droplets) {
+            return droplets.name.toLowerCase().includes(val.toLowerCase()) || droplets.id === val
+          });
+        }
+      }
+    },
   };
 </script>
 
