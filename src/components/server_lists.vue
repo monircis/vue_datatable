@@ -28,7 +28,7 @@
             <div class="switch">
               <label>
                 OFF {{ droplet.state }}
-                <input type="checkbox" v-model="droplet.state"  @change="updateStatus(index)">
+                <input type="checkbox" v-model="droplet.name"  @change="updateStatus(index)">
                 <span class="lever"></span> ON
               </label>
             </div>
@@ -94,7 +94,7 @@
         let state = getdroplet.state;
         //alert(state);
         let dropletID = getdroplet.id;
-        if(state==true){
+        if(state=='off'){
           //axios.get("https://command-center-apis.herokuapp.com/vm/start/"+dropletID+'/')
           axios.put("https://command-center-apis.herokuapp.com/vm/start/psygfb9zd/",{headers: { "Content-Type": 'application/json'}})
         .then(function (response) {
