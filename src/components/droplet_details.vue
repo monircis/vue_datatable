@@ -166,7 +166,7 @@
         //start loading
         vm.$parent.startLoading();
         let droplet_id = this.$route.params.id;
-        axios.get("https://command-center-vm-api.herokuapp.com/api/vms/" + droplet_id)
+        axios.get("https://command-center-apis.herokuapp.com/vm/" + droplet_id+'/')
           .then(function (response) {
             console.log(response.data);
             vm.dropletDetail = response.data.data;

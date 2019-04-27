@@ -5512,3 +5512,6 @@ input:focus {
 .search-input input{
   padding-left: 25px;
 }
+.show-select{
+  display: block !important;
+}

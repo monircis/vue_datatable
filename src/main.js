@@ -3,6 +3,7 @@
 //import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbvue/build/css/mdb.css';
 import 'bootstrap-datepicker';
+import 'bootstrap-timepicker';
 import Vue from 'vue';
 import App from './App';
 import router from './router';
@@ -26,6 +27,7 @@ const options = {
   confirmButtonColor: '#41b882',
   cancelButtonColor: '#ff7674'
 };
+
 Vue.use(VueSweetalert,options);
 Vue.use(Toasted, {
   theme: "toasted-primary",

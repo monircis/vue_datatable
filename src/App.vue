@@ -1,14 +1,9 @@
 <template>
   <div id="app">
-
 <!-- built files will be auto injected -->
-<div class="outer-wrapper">  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+<div class="outer-wrapper">
   <!-- Bootstrap core CSS -->
-
   <!-- Material Design Bootstrap -->
-
-
-
   <header class="header-area white-bg nonprint-area">
     <div class="container-fluid">
       <div class="header-main-content ">

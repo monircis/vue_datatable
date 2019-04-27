@@ -24,13 +24,22 @@
           <td>{{ droplet.name }}</td>
           <td>{{ droplet.id}}</td>
           <td width="110px">
+
             <div class="switch">
               <label>
-                Off
-                <input type="checkbox" checked="checked"    @change="updateStatus(index)">
-                <span class="lever"></span> On
+                OFF {{ droplet.state }}
+                <input type="checkbox" v-model="droplet.state"  @change="updateStatus(index)">
+                <span class="lever"></span> ON
               </label>
             </div>
+
+            <!--<div class="switch" v-else-if="droplet.state == 'ready'">-->
+              <!--<label>-->
+                <!--OFF {{ droplet.state }}-->
+                <!--<input type="checkbox" checked  v-model="droplet.state"  @change="updateStatus(index)">-->
+                <!--<span class="lever"></span> ON-->
+              <!--</label>-->
+            <!--</div>-->
             <!--<button type="button" class="btn btn-sm  btn-info waves-effect waves-light">ON/OFF</button>-->
           </td>
           <td width="120px"><router-link class="btn btn-configure btn-sm" v-bind:to="'droplet-details/'+droplet.id" >Configure</router-link></td>
@@ -63,9 +72,9 @@
         var vm = this;
         //start loading
         vm.$parent.startLoading();
-        axios.get("https://command-center-vm-api.herokuapp.com/api/vms")
+        axios.get("https://command-center-apis.herokuapp.com/vm/")
           .then(function(response) {
-             console.log(response.data);
+             //console.log(response.data);
             vm.droplets = response.data.data;
             vm.alldroplets = response.data.data;
             //end loading
@@ -76,14 +85,43 @@
             //console.log(response);
           });
       },
-      updateStatus: function() {
+      updateStatus: function(index) {
+        let  vm = this;
+        //get  ingle  droplet by  index
+        let getdroplet =this.droplets[index];
+        //find state
+        let state = getdroplet.state;
+        //alert(state);
+        let dropletID = getdroplet.id;
+        if(state==true){
+          //axios.get("https://command-center-apis.herokuapp.com/vm/start/"+dropletID+'/')
+          axios.put("https://command-center-apis.herokuapp.com/vm/start/psygfb9zd/",{headers: { "Content-Type": 'application/json'}})
+        .then(function (response) {
+              //console.log(response.data);
+          console.log(response.data);
+              //end loading
+              //vm.$parent.endLoading();
+            })
+          //alert("i am  true"+ dropletID);
+        }else{
+          //axios.get("https://command-center-apis.herokuapp.com/vm/stop/"+dropletID+'/')
+          axios.put("https://command-center-apis.herokuapp.com/vm/stop/psygfb9zd/",{headers: { "Content-Type": 'application/json'}})
+            .then(function (response) {
+              //console.log(response.data);
+              console.log(response.data);
+              //end loading
+              vm.$parent.endLoading();
+            })
+          //alert("i am  false"+ dropletID);
+        }
+        //console.log(this.droplets[index]);
         //alert();
       }
     },
     watch: {
       searchDroplet: function (val) {
          console.log(val);
-        if (this._.isEmpty(val)) {
+        if (this._.isEmpty(val) & val.length > 0) {
           this.droplets = this.droplets
         } else {
           this.droplets = this._.filter(this.alldroplets, function (droplets) {
