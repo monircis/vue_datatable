@@ -33,6 +33,7 @@
               </label>
             </div>
 
+
             <!--<div class="switch" v-else-if="droplet.state == 'ready'">-->
               <!--<label>-->
                 <!--OFF {{ droplet.state }}-->
@@ -99,6 +100,7 @@
         .then(function (response) {
               //console.log(response.data);
           console.log(response.data);
+
               //end loading
               //vm.$parent.endLoading();
             })
@@ -109,6 +111,7 @@
             .then(function (response) {
               //console.log(response.data);
               console.log(response.data);
+
               //end loading
               vm.$parent.endLoading();
             })
