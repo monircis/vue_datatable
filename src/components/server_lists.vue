@@ -28,7 +28,12 @@
               <button type="submit" class="btn btn-default" @click="updateStatus(index)" v-model="droplet.state">{{droplet.state}}</button>
             </div>
             <div v-else>
-              <button type="submit" class="btn btn-info" @click="updateStatus(index)" v-model="droplet.state">{{droplet.state}}</button>
+              <div v-if="droplet.state=='starting'">
+                <button type="submit" class="btn btn-info" @click="updateStatus(index)" v-model="droplet.state">Ready</button>
+              </div>
+              <div v-else>
+                <button type="submit" class="btn btn-info" @click="updateStatus(index)" v-model="droplet.state">{{droplet.state}}</button>
+              </div>
             </div>
             <!--<div class="switch" v-if="droplet.state==='off'">-->
               <!--<label>-->
