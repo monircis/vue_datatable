@@ -24,15 +24,21 @@
           <td>{{ droplet.name }}</td>
           <td>{{ droplet.id}}</td>
           <td width="110px">
-
-            <div class="switch">
-              <label>
-                OFF {{ droplet.state }}
-                <input type="checkbox" v-model="droplet.name"  @change="updateStatus(index)">
-                <span class="lever"></span> ON
-              </label>
-            </div>
-
+                <button type="submit" class="btn btn-info" @click="updateStatus(index)" v-model="droplet.state">{{droplet.state}}</button>
+            <!--<div class="switch" v-if="droplet.state==='off'">-->
+              <!--<label>-->
+                <!--OFF {{droplet.state }}-->
+                <!--<input type="checkbox"  @change="updateStatus(index)" checked="false">-->
+                <!--<span class="lever"></span> ON-->
+              <!--</label>-->
+            <!--</div>-->
+            <!--<div class="switch" v-else>-->
+              <!--<label>-->
+                <!--OFF {{droplet.state }}-->
+                <!--<input type="checkbox"  @change="updateStatus(index)" checked="true">-->
+                <!--<span class="lever"></span> ON-->
+              <!--</label>-->
+            <!--</div>-->
 
             <!--<div class="switch" v-else-if="droplet.state == 'ready'">-->
               <!--<label>-->
@@ -58,6 +64,7 @@
   export default {
     data() {
          return{
+           status:'',
            searchDroplet: '',
            serverStatus:'',
            droplets: [],
@@ -90,30 +97,39 @@
         let  vm = this;
         //get  ingle  droplet by  index
         let getdroplet =this.droplets[index];
+        //console.log(getdroplet);
         //find state
         let state = getdroplet.state;
         //alert(state);
         let dropletID = getdroplet.id;
         if(state=='off'){
+          console.log(state);
+          // vm.$parent.startLoading();
           //axios.get("https://command-center-apis.herokuapp.com/vm/start/"+dropletID+'/')
           axios.put("https://command-center-apis.herokuapp.com/vm/start/psygfb9zd/",{headers: { "Content-Type": 'application/json'}})
         .then(function (response) {
               //console.log(response.data);
           console.log(response.data);
-
+          vm.droplets = response.data;
+          //reload this  page
+          //vm.$router.go();
+          // vm.$parent.endLoading();
               //end loading
               //vm.$parent.endLoading();
             })
           //alert("i am  true"+ dropletID);
         }else{
+          console.log(state);
           //axios.get("https://command-center-apis.herokuapp.com/vm/stop/"+dropletID+'/')
           axios.put("https://command-center-apis.herokuapp.com/vm/stop/psygfb9zd/",{headers: { "Content-Type": 'application/json'}})
             .then(function (response) {
               //console.log(response.data);
               console.log(response.data);
-
+              vm.droplets = response.data;
+              //reload this  page
+              //vm.$router.go();
               //end loading
-              vm.$parent.endLoading();
+              // vm.$parent.endLoading();
             })
           //alert("i am  false"+ dropletID);
         }
