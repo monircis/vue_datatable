@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="tp-area mb15">
-          <h3 class="pull-left">Create New Linkedin  Profile</h3>
+          <h3 class="pull-left">Create New Linkedin Profile</h3>
           <router-link class="btn-reset pull-right" v-bind:to="'/linkedin-profile'"> Profile List's
           </router-link>
         </div>
@@ -36,7 +36,7 @@
           <label>
             User Agent:
           </label>
-          <select  v-model="user_agent" class="form-control show-select">
+          <select v-model="user_agent" class="form-control show-select">
             <option value="2">A</option>
           </select>
         </div><!--end single-->
@@ -112,12 +112,13 @@
     //$('.timepicker').timepicker();
   });
   import axios from 'axios';
+
   export default {
     data() {
       return {
         //dropletDetail: {}
-        username:'',
-        password:'',
+        username: '',
+        password: '',
       }
     },
     methods: {
@@ -127,22 +128,22 @@
         //start loading
         vm.$parent.startLoading();
         axios.get("https://command-center-vm-api.herokuapp.com/api/",
-        {
-          username: vm.username,
-          password: vm.password,
-          user_agent: vm.user_agent,
-          minimum_delay: vm.minimum_delay,
-          maximum_delay: vm.maximum_delay,
-          daily_page_limit: vm.daily_page_limit,
-          country: vm.country,
-          start_at: vm.start_at,
-          end_at: vm.end_at
-        }
+          {
+            username: vm.username,
+            password: vm.password,
+            user_agent: vm.user_agent,
+            minimum_delay: vm.minimum_delay,
+            maximum_delay: vm.maximum_delay,
+            daily_page_limit: vm.daily_page_limit,
+            country: vm.country,
+            start_at: vm.start_at,
+            end_at: vm.end_at
+          }
         ).then(function (response) {
-            console.log(response.data);
-            //end loading
-            vm.$parent.endLoading();
-          })
+          console.log(response.data);
+          //end loading
+          vm.$parent.endLoading();
+        })
           .catch((response) => {
             vm.$parent.endLoading();
             //end loading
