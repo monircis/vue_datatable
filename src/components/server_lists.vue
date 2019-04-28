@@ -110,7 +110,7 @@
         .then(function (response) {
               //console.log(response.data);
           console.log(response.data);
-          vm.droplets = response.data;
+          vm.droplets.$set(index, { state: response.data.state})
           //reload this  page
           //vm.$router.go();
           // vm.$parent.endLoading();
@@ -125,7 +125,8 @@
             .then(function (response) {
               //console.log(response.data);
               console.log(response.data);
-              vm.droplets = response.data;
+              vm.droplets.$set(index, { state: response.data.state})
+              // vm.droplets.$remove(index)
               //reload this  page
               //vm.$router.go();
               //end loading
