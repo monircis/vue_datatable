@@ -5245,6 +5245,7 @@ input:focus {
   background:  rgba(255, 255, 255, 0.7);
   right: 0;
   z-index: 100;
+  padding-top: 50px;
 }
  #preloader-show img{
    position:  relative;
@@ -5514,4 +5515,15 @@ input:focus {
 }
 .show-select{
   display: block !important;
+}
+.show-delay{
+  position: absolute;
+  text-align: center;
+  vertical-align: middle;
+  width: 100px;
+  background: rgba(255, 255, 255, 0.8);
+  cursor: not-allowed;
+}
+.show-delay img{
+  height: 30px;
 }

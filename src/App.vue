@@ -31,7 +31,7 @@
   </header>
    <app-sidebar class="nonprint-area" ></app-sidebar>
   <div class="main-content-outer">
-    <div id="preloader-show" class="mt50" v-if="isLoading">
+    <div id="preloader-show" v-if="isLoading">
       <img  src="@/assets/images/circle-loader.gif" />
     </div>
     <div class="main-content-inner pdt50">

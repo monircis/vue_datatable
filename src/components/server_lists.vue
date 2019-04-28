@@ -24,6 +24,9 @@
           <td>{{ droplet.name }}</td>
           <td>{{ droplet.id}}</td>
           <td width="110px">
+            <div class="show-delay"  v-if="delay" v-model="delay">
+              <img  src="@/assets/images/circle-loader.gif" />
+            </div>
             <div v-if="droplet.state=='off'">
               <button type="submit" class="btn btn-default" @click="updateStatus(index)" v-model="droplet.state">{{droplet.state}}</button>
             </div>
@@ -74,6 +77,7 @@
   export default {
     data() {
          return{
+           delay: false,
            status:'',
            searchDroplet: '',
            serverStatus:'',
@@ -104,6 +108,7 @@
           });
       },
       updateStatus: function(index) {
+        this.delay=true;
         let  vm = this;
         //get  ingle  droplet by  index
         let getdroplet =this.droplets[index];
@@ -114,27 +119,19 @@
         let dropletID = getdroplet.id;
         if(state=='off'){
           console.log(state);
-          // vm.$parent.startLoading();
           //axios.get("https://command-center-apis.herokuapp.com/vm/start/"+dropletID+'/')
           axios.put("https://command-center-apis.herokuapp.com/vm/start/psygfb9zd/",{headers: { "Content-Type": 'application/json'}})
         .then(function (response) {
-          vm.$toasted.show('Success', {type: 'success', icon: 'fa-exclamation-triangle'});
+          //vm.$toasted.show('Success', {type: 'success', icon: 'fa-exclamation-triangle'});
+          //end loading
+          vm.$parent.endLoading();
           vm.$router.go();
           vm.droplets.$set(index, { state: 'ready'});
-          console.log(this.droplets);
-
-              //console.log(response.data);
-          // console.log(response.data);
-          // vm.droplets.$set(index, { state: response.data.state})
-          //reload this  page
-          //vm.$router.go();
-          // vm.$parent.endLoading();
-              //end loading
-              //vm.$parent.endLoading();
             })
             .catch(function (error) {
-              vm.$toasted.show('Success', {type: 'success', icon: 'fa-exclamation-triangle'});
+              //vm.$toasted.show('Success', {type: 'success', icon: 'fa-exclamation-triangle'});
               //end loading
+              vm.$parent.endLoading();
               vm.$router.go();
               vm.droplets.$set(index, { state: 'ready'});
 
@@ -142,10 +139,13 @@
           //alert("i am  true"+ dropletID);
         }else{
           console.log(state);
+          //vm.$parent.startLoading();
           //axios.get("https://command-center-apis.herokuapp.com/vm/stop/"+dropletID+'/')
           axios.put("https://command-center-apis.herokuapp.com/vm/stop/psygfb9zd/",{headers: { "Content-Type": 'application/json'}})
             .then(function (response) {
-              vm.$toasted.show('Success', {type: 'success', icon: 'fa-exclamation-triangle'});
+              //vm.$toasted.show('Success', {type: 'success', icon: 'fa-exclamation-triangle'});
+              //end loading
+              //vm.$parent.endLoading();
               vm.$router.go();
               vm.droplets.$set(index, { state: 'off'});
               console.log(this.droplets);
@@ -153,12 +153,12 @@
               // vm.droplets.$remove(index)
               //reload this  page
               //vm.$router.go();
-              //end loading
-              // vm.$parent.endLoading();
+
             })
             .catch(function (error) {
               //end loading
-              vm.$toasted.show('Success', {type: 'success', icon: 'fa-exclamation-triangle'});
+              //vm.$parent.endLoading();
+              //vm.$toasted.show('Success', {type: 'success', icon: 'fa-exclamation-triangle'});
               vm.$router.go();
               vm.droplets.$set(index, { state: 'off'});
 
