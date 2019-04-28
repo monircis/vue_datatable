@@ -28,14 +28,14 @@
               <img  src="@/assets/images/circle-loader.gif" />
             </div>
             <div v-if="droplet.state=='off'">
-              <button type="submit" class="btn btn-default" @click="updateStatus(index)" v-model="droplet.state">{{droplet.state}}</button>
+              <button type="submit" class="btn btn-default" @click="updateStatus(index)" v-model="droplet.state">OFF</button>
             </div>
             <div v-else>
               <div v-if="droplet.state=='starting'">
-                <button type="submit" class="btn btn-info" @click="updateStatus(index)" v-model="droplet.state">Ready</button>
+                <button type="submit" class="btn btn-info" @click="updateStatus(index)" v-model="droplet.state">ON</button>
               </div>
               <div v-else>
-                <button type="submit" class="btn btn-info" @click="updateStatus(index)" v-model="droplet.state">{{droplet.state}}</button>
+                <button type="submit" class="btn btn-info" @click="updateStatus(index)" v-model="droplet.state">ON</button>
               </div>
             </div>
             <!--<div class="switch" v-if="droplet.state==='off'">-->
