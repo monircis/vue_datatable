@@ -134,7 +134,6 @@
               vm.$parent.endLoading();
               vm.$router.go();
               vm.droplets.$set(index, { state: 'ready'});
-
             });
           //alert("i am  true"+ dropletID);
         }else{

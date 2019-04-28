@@ -4,7 +4,7 @@
 <div class="outer-wrapper">
   <!-- Bootstrap core CSS -->
   <!-- Material Design Bootstrap -->
-  <header class="header-area white-bg nonprint-area">
+  <header class="header-area white-bg nonprint-area" v-if="username">
     <div class="container-fluid">
       <div class="header-main-content ">
         <div class="row">
@@ -22,14 +22,14 @@
           </div>
           <div class="col-sm-7 col-xs-5">
             <div class="text-center header-actions"  >
-              <!--<button type="button" class="btn base-bg btn-rounded waves-effect pull-right mt20" @click="logout"> Logout</button>-->
+              <button type="button" class="btn base-bg btn-rounded waves-effect pull-right mt20" @click="logout"> Logout</button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </header>
-   <app-sidebar class="nonprint-area" ></app-sidebar>
+   <app-sidebar class="nonprint-area" v-if="username"></app-sidebar>
   <div class="main-content-outer">
     <div id="preloader-show" v-if="isLoading">
       <img  src="@/assets/images/circle-loader.gif" />
@@ -67,6 +67,7 @@
     name: 'app',
      data() {
        return{
+         username:'',
          isLoggedIn: true,
          isLoading: false
        }
@@ -75,8 +76,18 @@
       'app-sidebar': sidebar,
     },
      mounted() {
+       if (localStorage.getItem("username")) {
+         let xx = this;
+         xx.username = localStorage.getItem("username");
+       }
      },
      methods: {
+       logout: function () {
+         console.log("logout");
+         localStorage.removeItem("username");
+         this.$router.push('/login');
+         this.$router.go();
+       },
        startLoading: function () {
          this.isLoading = true
        },
