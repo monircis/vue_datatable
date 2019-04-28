@@ -23,12 +23,12 @@
           <td class="text-center" width="50px"><img class=" " src="@/assets/images/windows-8.png" width="15px"/></td>
           <td>{{ droplet.name }}</td>
           <td>{{ droplet.id}}</td>
-          <td width="110px">
+          <td width="50px" class="status">
             <div class="show-delay"  v-if="delay" v-model="delay">
               <img  src="@/assets/images/circle-loader.gif" />
             </div>
             <div v-if="droplet.state=='off'">
-              <button type="submit" class="btn btn-default" @click="updateStatus(index)" v-model="droplet.state">OFF</button>
+              <button type="submit" class="btn btn-danger" @click="updateStatus(index)" v-model="droplet.state">OFF</button>
             </div>
             <div v-else>
               <div v-if="droplet.state=='starting'">
@@ -120,7 +120,7 @@
         if(state=='off'){
           console.log(state);
           //axios.get("https://command-center-apis.herokuapp.com/vm/start/"+dropletID+'/')
-          axios.put("https://command-center-apis.herokuapp.com/vm/start/psygfb9zd/",{headers: { "Content-Type": 'application/json'}})
+          axios.put("https://command-center-apis.herokuapp.com/vm/start/"+dropletID+'/',{headers: { "Content-Type": 'application/json'}})
         .then(function (response) {
           //vm.$toasted.show('Success', {type: 'success', icon: 'fa-exclamation-triangle'});
           //end loading
@@ -141,7 +141,8 @@
           console.log(state);
           //vm.$parent.startLoading();
           //axios.get("https://command-center-apis.herokuapp.com/vm/stop/"+dropletID+'/')
-          axios.put("https://command-center-apis.herokuapp.com/vm/stop/psygfb9zd/",{headers: { "Content-Type": 'application/json'}})
+          // axios.put("https://command-center-apis.herokuapp.com/vm/stop/psygfb9zd/",{headers: { "Content-Type": 'application/json'}})
+          axios.put("https://command-center-apis.herokuapp.com/vm/stop/"+dropletID+'/',{headers: { "Content-Type": 'application/json'}})
             .then(function (response) {
               //vm.$toasted.show('Success', {type: 'success', icon: 'fa-exclamation-triangle'});
               //end loading
