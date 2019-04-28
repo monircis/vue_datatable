@@ -14,7 +14,7 @@
                       aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-bars pdr10">
                 </i>
-                Server Management Web App
+                Server Management Web App   {{ username }}
               </button>
               <div class="dropdown-menu  no-padding ">
               </div>

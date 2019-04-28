@@ -9,7 +9,7 @@
             <label>Username:</label>
             <input type="text" class="form-control" placeholder="Username" v-model="username" required>
             <label class="mt15">Password:</label>
-            <input type="password" class="form-control  mb15" placeholder="Password" v-model="password"  @submit="login()" required>
+            <input type="password" class="form-control  mb15" placeholder="Password" v-model="password" required>
             <button type="submit" class="btn base-bg"  @click="login()" >Login</button>
           </div>
         </div>
@@ -55,15 +55,14 @@
         let vm = this;
         axios.get('https://command-center-apis.herokuapp.com/user/login/')
           .then((response) => {
-            alert(response.data);
-            //console.log(response.data);
-            localStorage.setItem("username", response.data.username);
+            console.log(response.data.data);
+             localStorage.setItem("username", response.data.data.username);
             //localStorage.setItem("doctor_name", response.data.profile.name);
             //end loading
             vm.$parent.endLoading();
             vm.$router.push('/');
             this.$router.go(this.$router.currentRoute);
-            //vm.$router.go('/');
+            vm.$router.go('/');
           })
           .catch((response) => {
             //end loading
