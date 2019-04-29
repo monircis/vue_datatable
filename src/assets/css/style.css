@@ -5520,14 +5520,12 @@ input:focus {
   position: absolute;
   text-align: center;
   vertical-align: middle;
-  width: 76px;
+  width: 100px;
   background: rgba(255, 255, 255, 0.8);
   cursor: not-allowed;
+  z-index: 100;
 }
 .show-delay img{
   height: 30px;
 }
-.status .btn{
-  min-width: 62px;
-  border-radius: 36px !important;
-}
+
