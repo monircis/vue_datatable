@@ -32,11 +32,11 @@ const options = {
 Vue.use(VueSweetalert, options);
 Vue.use(Toasted, {
   theme: "toasted-primary",
-  position: "bottom-right",
+  position: "top-right",
   iconPack: 'fontawesome',
   closeHtml: "check",
   showCloseButton: true,
-  duration: 1500
+  duration: 15000
 });
 Vue.use(VueLodash);
 /* eslint-disable no-new */
