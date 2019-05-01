@@ -41,15 +41,15 @@ Vue.use(Toasted, {
 Vue.use(VueLodash);
 /* eslint-disable no-new */
 //check  login
-router.beforeEach((to, from, next) => {
-  if (to.path != '/login') {
-    let username = localStorage.getItem("username");
-    if (Vue._.isEmpty(username)) {
-      return next('/login');
-    }
-  }
-  next();
-});
+// router.beforeEach((to, from, next) => {
+//   if (to.path != '/login') {
+//     let username = localStorage.getItem("username");
+//     if (Vue._.isEmpty(username)) {
+//       return next('/login');
+//     }
+//   }
+//   next();
+// });
 new Vue({
   el: '#app',
   router,

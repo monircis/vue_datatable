@@ -4,7 +4,8 @@
     <div class="outer-wrapper">
       <!-- Bootstrap core CSS -->
       <!-- Material Design Bootstrap -->
-      <header class="header-area white-bg nonprint-area" v-if="username">
+      <!--<header class="header-area white-bg nonprint-area" v-if="username">-->
+      <header class="header-area white-bg nonprint-area">
         <div class="container-fluid">
           <div class="header-main-content ">
             <div class="row">
@@ -14,7 +15,7 @@
                           aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-bars pdr10">
                     </i>
-                    Server Management Web App {{ username }}
+                    Server Management Web App
                   </button>
                   <div class="dropdown-menu  no-padding ">
                   </div>
@@ -22,16 +23,17 @@
               </div>
               <div class="col-sm-7 col-xs-5">
                 <div class="text-center header-actions">
-                  <button type="button" class="btn base-bg btn-rounded waves-effect pull-right mt20" @click="logout">
-                    Logout
-                  </button>
+                  <!--<button type="button" class="btn base-bg btn-rounded waves-effect pull-right mt20" @click="logout">-->
+                    <!--Logout-->
+                  <!--</button>-->
                 </div>
               </div>
             </div>
           </div>
         </div>
       </header>
-      <app-sidebar class="nonprint-area" v-if="username"></app-sidebar>
+      <app-sidebar class="nonprint-area"></app-sidebar>
+      <!--<app-sidebar class="nonprint-area" v-if="username"></app-sidebar>-->
       <div class="main-content-outer">
         <div id="preloader-show" v-if="isLoading">
           <img src="@/assets/images/circle-loader.gif"/>

@@ -30,11 +30,11 @@
             </div>
 
             <div class="switch">
-            <label>
-            OFF
-            <input type="checkbox" v-model="droplet.state"  @change="updateStatus(index,$event)">
-            <span class="lever"></span> ON
-            </label>
+              <label>
+                OFF
+                <input type="checkbox" v-model="droplet.state" @change="updateStatus(index,$event)">
+                <span class="lever"></span> ON
+              </label>
             </div>
           </td>
           <td width="120px">
@@ -54,12 +54,7 @@
   import axios from 'axios';
   const $ = require('jquery');
   window.$ = $;
-  //click a date and  catch  the date
   $(function () {
-    // $('input').click(function(){
-    //   $(".show-delay").addClass("intro");
-    //   alert();
-    // });
   });
   export default {
     data() {
@@ -80,12 +75,12 @@
         var vm = this;
         //start loading
         vm.$parent.startLoading();
-        axios.get("https://command-center-apis.herokuapp.com/vm/")
+        axios.get("https://command-center-apis.herokuapp.com/machine/")
           .then(function (response) {
             //console.log(response.data);
-            let tempData= response.data.data;
+            let tempData = response.data.data;
             tempData.forEach(function (droplet) {
-              droplet.state=droplet.state === 'ready';
+              droplet.state = droplet.state === 'ready';
               vm.droplets.push(droplet);
             });
             //vm.droplets = response.data.data;
@@ -98,9 +93,9 @@
             //console.log(response);
           });
       },
-      updateStatus: function (index,event) {
+      updateStatus: function (index, event) {
         //make  show  loader  just specific  button
-        let loader = $(event.target).parent().parent().siblings('#id_'+index);
+        let loader = $(event.target).parent().parent().siblings('#id_' + index);
         $(loader).css({"display": "block"});
         let vm = this;
         //vm.delay=true;
@@ -112,26 +107,38 @@
         let state = getdroplet.state;
         //alert(state);
         let dropletID = getdroplet.id;
-        if (state==true) {
+        if (state == true) {
           //alert(dropletID);
           //console.log(state);
-          axios.put("https://command-center-apis.herokuapp.com/vm/start/" + dropletID + '/', {headers: {"Content-Type": 'application/json'}, timeout: 2*60*1000})
+          axios.put("https://command-center-apis.herokuapp.com/machine/start/" + dropletID + '/', {
+            headers: {"Content-Type": 'application/json'},
+            timeout: 2 * 60 * 1000
+          })
             .then(function (response) {
               console.log(response.data.data);
-              vm.$toasted.show('Server Is ON :: '+getdroplet.name, {type: 'success', icon: 'fa-exclamation-triangle'});
+              vm.$toasted.show('Server Is ON :: ' + getdroplet.name, {
+                type: 'success',
+                icon: 'fa-exclamation-triangle'
+              });
               // show false loader
               $(loader).css({"display": "none"});
             })
             .catch(function (error) {
-            vm.$toasted.show('Server Is ON :: '+getdroplet.name, {type: 'success', icon: 'fa-exclamation-triangle'});
+              vm.$toasted.show('Server Is ON :: ' + getdroplet.name, {
+                type: 'success',
+                icon: 'fa-exclamation-triangle'
+              });
               console.log(error);
               // show false loader
               $(loader).css({"display": "none"});
-              });
-        }else{
-          axios.put("https://command-center-apis.herokuapp.com/vm/stop/" + dropletID + '/', {headers: {"Content-Type": 'application/json'}})
+            });
+        } else {
+          axios.put("https://command-center-apis.herokuapp.com/machine/stop/" + dropletID + '/', {headers: {"Content-Type": 'application/json'}})
             .then(function (response) {
-              vm.$toasted.show('Server Is OFF  :: '+getdroplet.name, {type: 'error', icon: 'fa-exclamation-triangle'});
+              vm.$toasted.show('Server Is OFF  :: ' + getdroplet.name, {
+                type: 'error',
+                icon: 'fa-exclamation-triangle'
+              });
               console.log(this.droplets);
               // show false loader
               $(loader).css({"display": "none"});

@@ -4690,105 +4690,105 @@ table > tbody > tr.selected {
   padding: 10px 25px;
 }
 
-.form-modal .patiend-lists {
+.form-modal .users-lists {
   padding: 0 15px;
   margin: 15px 0;
   border-bottom: 1px solid #6f65651a;
 }
 
-.form-modal .patiend-lists h4 {
+.form-modal .users-lists h4 {
   font-size: 15px;
 }
 
-.form-modal .patiend-lists .singlelists_box {
+.form-modal .users-lists .singlelists_box {
   border: 1px solid #8787871a;
   overflow: hidden;
 }
 
-.form-modal .patiend-lists .singlelists_box .table-prescription th {
+.form-modal .users-lists .singlelists_box .table-prescription th {
   border: 1px solid #8787871a;
 }
 
-.form-modal .patiend-lists .singlelists_box .table-prescription td {
+.form-modal .users-lists .singlelists_box .table-prescription td {
   vertical-align: middle;
   border: 1px solid #8787871a;
 }
 
-.form-modal .patiend-lists .singlelists_box .table-prescription td textarea {
+.form-modal .users-lists .singlelists_box .table-prescription td textarea {
   border: 1px solid #ddd;
 }
 
-.form-modal .patiend-lists .singlelists_box .table-prescription td .form-group, .form-modal .patiend-lists .singlelists_box .table-prescription td .checkbox {
+.form-modal .users-lists .singlelists_box .table-prescription td .form-group, .form-modal .users-lists .singlelists_box .table-prescription td .checkbox {
   margin: 0;
 }
 
-.form-modal .patiend-lists .singlelists_box .table-prescription td .form-group label, .form-modal .patiend-lists .singlelists_box .table-prescription td .checkbox label {
+.form-modal .users-lists .singlelists_box .table-prescription td .form-group label, .form-modal .users-lists .singlelists_box .table-prescription td .checkbox label {
   margin: 0;
   color: #363636;
 }
 
-.form-modal .patiend-lists .singlelists_box .list-chk-box {
+.form-modal .users-lists .singlelists_box .list-chk-box {
   padding-bottom: 10px;
 }
 
-.form-modal .patiend-lists .singlelists_box .list-chk-box .form-group {
+.form-modal .users-lists .singlelists_box .list-chk-box .form-group {
   margin-bottom: 0;
   margin-top: 0;
 }
 
-.form-modal .patiend-lists .singlelists_box .list-chk-box .checkbox {
+.form-modal .users-lists .singlelists_box .list-chk-box .checkbox {
   margin-bottom: 0;
   margin-top: 0;
 }
 
-.form-modal .patiend-lists .details-info {
+.form-modal .users-lists .details-info {
   border-top: 1px dashed #d1d1d1;
 }
 
-.form-modal .patiend-lists .details-info .pin {
+.form-modal .users-lists .details-info .pin {
   border: 1px solid #8787871a;
   padding: 10px 15px;
   border-bottom: none;
 }
 
-.form-modal .patiend-lists .single-tab {
+.form-modal .users-lists .single-tab {
   border: 1px solid #6f65651a;
   border-bottom: none;
   padding-top: 6px;
   cursor: pointer;
 }
 
-.form-modal .patiend-lists .single-tab.focus[aria-expanded="true"] {
+.form-modal .users-lists .single-tab.focus[aria-expanded="true"] {
   background: #1976d2;
 }
 
-.form-modal .patiend-lists .single-tab.focus[aria-expanded="true"] a, .form-modal .patiend-lists .single-tab.focus[aria-expanded="true"] span, .form-modal .patiend-lists .single-tab.focus[aria-expanded="true"] small, .form-modal .patiend-lists .single-tab.focus[aria-expanded="true"] i {
+.form-modal .users-lists .single-tab.focus[aria-expanded="true"] a, .form-modal .users-lists .single-tab.focus[aria-expanded="true"] span, .form-modal .users-lists .single-tab.focus[aria-expanded="true"] small, .form-modal .users-lists .single-tab.focus[aria-expanded="true"] i {
   color: #fff;
 }
 
-.form-modal .patiend-lists .single-tab.prescription-lists {
+.form-modal .users-lists .single-tab.prescription-lists {
   border: 1px solid #d7d7d71a;
   overflow: hidden;
   background: #d7d7d71a;
 }
 
-.form-modal .patiend-lists .single-tab.prescription-lists .patient-main {
+.form-modal .users-lists .single-tab.prescription-lists .patient-main {
   top: 6px;
 }
 
-.form-modal .patiend-lists .single-tab.prescription-lists .patient-main a {
+.form-modal .users-lists .single-tab.prescription-lists .patient-main a {
   color: #1976d2;
 }
 
-.form-modal .patiend-lists .single-tab.prescription-lists .open-col {
+.form-modal .users-lists .single-tab.prescription-lists .open-col {
   line-height: 46px;
 }
 
-.form-modal .patiend-lists .single-tab:hover {
+.form-modal .users-lists .single-tab:hover {
   background: #d7d7d71a;
 }
 
-.form-modal .patiend-lists .single-tab:last-child {
+.form-modal .users-lists .single-tab:last-child {
   border: 1px solid #eee !important;
 }
 
@@ -5272,10 +5272,10 @@ input:focus {
   top: 4.5px;
   border-radius: 3px;
 }
-.form-modal .patiend-lists .details-info.off-border{
+.form-modal .users-lists .details-info.off-border{
   border-top: none !important;
 }
-.form-modal .patiend-lists .single-tab:last-child {
+.form-modal .users-lists .single-tab:last-child {
   border-bottom: 1px solid #fff !important;
 }
 
@@ -5528,4 +5528,9 @@ input:focus {
 .show-delay img{
   height: 30px;
 }
-
+.full-width-sp{
+  width: 100%;
+}
+.tp15{
+  top: 15px !important;
+}
