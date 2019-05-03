@@ -1,25 +1,58 @@
 <template>
-  <div class="form-modal form-block">
+  <div class="form-modal form-block dropletarea">
     <div class="tp-area"><h3 class="pull-left">Linkedin Profile List</h3>
-      <router-link class="btn base-bg btn-rounded waves-effect pull-right" v-bind:to="'/linkedin-profile'">Add New Profile
-      </router-link>
-     </div>
-    <div class="users-lists">
-      <div class="row single-tab focus" v-for="(Profile ,index) in linkedinProfiles">
-        <router-link v-bind:to="'single-profile/'+Profile._id" class="full-width-sp">
-        <div class="col-md-7">
-          <img src="https://via.placeholder.com/40/eee/1976d2/?text=1"
-               class="img-circle img-thumbnail pull-left">
-          <div class="patient-main">
-            <h4 class="mt5">{{ Profile.linkedinEmail}}</h4>
-          </div>
-        </div>
-          <div class="col-md-3"><span class="patient-main tp15">{{ Profile.country }}</span></div>
-        <div class="col-md-2"><span class="open-col"><i aria-hidden="true" class="fa fa-location-arrow"></i></span>
-        </div>
+
+      <div class="search-input width450">
+        <router-link class="btn-reset pull-right" v-bind:to="'/linkedin-profile'"> Create New Linkedin Profile
         </router-link>
       </div>
+    </div>
+    <div class="table-responsive droplets mt15">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Linkedin Email</th>
+          <th>Country</th>
+          <th>IP</th>
+          <th width="120px">Assign IP</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(Profile ,index) in linkedinProfiles">
+          <td class="text-center" width="60px">
+            <img class="img-circle img-thumbnail pull-left" :src="url + (index + 1)"/>
+          </td>
+          <td>{{ Profile.linkedinEmail}}</td>
+          <td>{{ Profile.country }}</td>
+          <td class="text-left" :id="'Proxy_Id_'+Profile._id">
+            {{ Profile.proxy_ip }}
+          </td>
+          <td :id="'profile_'+Profile._id">
 
+         <button class="btn btn-danger btn-xs" :id="'remove_'+Profile._id" @click="removeProxy(index)" v-if="Profile.proxy_ip.length">
+              Remove
+            </button>
+       <button class="btn base-bg btn-xs" :id="'assign_'+Profile._id" @click="assignProxy(index)" v-else>
+              Assign Proxy
+            </button>
+
+            <!--<div v-if="hasIP(Profile)">-->
+              <!--ok-->
+            <!--</div>-->
+            <!--<div v-else>-->
+              <!--none-->
+            <!--</div>-->
+          </td>
+          <td width="40px" class="text-center">
+            <router-link v-bind:to="'single-profile/'+Profile._id">
+              <span><i aria-hidden="true" class="fa fa-location-arrow size"></i></span>
+            </router-link>
+          </td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
@@ -30,33 +63,89 @@
   $(function () {
   });
   import axios from 'axios';
+
   export default {
     data() {
       return {
+        url: "https://via.placeholder.com/40/eee/FF425D/?text=",
         linkedinProfiles: []
       }
     },
     created: function () {
       this.loadApiData();
     },
+    computed: {
+    },
     methods: {
       loadApiData: function () {
         let vm = this;
-          vm.$parent.startLoading();
-          axios.get("https://command-center-apis.herokuapp.com/profile/")
-            .then(function (response) {
-            console.log(response.data);
-            vm.linkedinProfiles = response.data.data;
+        vm.$parent.startLoading();
+        axios.get("https://command-center-apis.herokuapp.com/profile/")
+          .then(function (response) {
+            //console.log(response.data);
+            let tempData =response.data.data;
+            tempData.forEach(function (profile) {
+              if (!profile.hasOwnProperty('proxy_ip')) {
+                profile.proxy_ip=''
+              }
+              vm.linkedinProfiles.push(profile);
+            });
+
             //end loading
             vm.$parent.endLoading();
           })
-            .catch((response) => {
-              vm.$parent.endLoading();
-              vm.$toasted.show('Something wrong  Try again.', {
-                type: 'error',
-                icon: 'fa-exclamation-triangle'
-              });
+          .catch((response) => {
+            console.log(response);
+            vm.$parent.endLoading();
+            vm.$toasted.show('Something wrong  Try again.', {
+              type: 'error',
+              icon: 'fa-exclamation-triangle'
             });
+          });
+      },
+      assignProxy: function (index) {
+        let vm = this;
+        let getProfile = this.linkedinProfiles[index];
+        axios.post("https://command-center-apis.herokuapp.com/proxy/assign-proxy",
+          {
+            profileId: getProfile._id,
+          }
+        ).then(function (response) {
+          console.log(response.data.data);
+          vm.linkedinProfiles[index].proxy_ip=response.data.data.proxy_ip;
+          //end loading
+          vm.$parent.endLoading();
+        })
+          .catch((response) => {
+            console.log(response);
+            vm.$parent.endLoading();
+            vm.$toasted.show('Something wrong  Try again.', {
+              type: 'error',
+              icon: 'fa-exclamation-triangle'
+            });
+          });
+      },
+      removeProxy: function (index) {
+        let vm = this;
+        let getProfile = this.linkedinProfiles[index];
+        axios.post("https://command-center-apis.herokuapp.com/proxy/remove-proxy",
+          {
+            profileId: getProfile._id,
+          }
+        ).then(function (response) {
+          vm.linkedinProfiles[index].proxy_ip='';
+          console.log(vm.linkedinProfiles);
+          //end loading
+          vm.$parent.endLoading();
+        })
+          .catch((response) => {
+            console.log(response);
+            vm.$parent.endLoading();
+            vm.$toasted.show('Something wrong  Try again.', {
+              type: 'error',
+              icon: 'fa-exclamation-triangle'
+            });
+          });
       }
     }
   };

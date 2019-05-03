@@ -5486,6 +5486,7 @@ input:focus {
 }
 .droplets table tbody tr td{
   border: 1px solid #f6f6f6;
+  vertical-align: middle;
 }
 .droplets .switch label input[type="checkbox"]:checked + .lever::after {
   background-color: #00c851 !important;
@@ -5533,4 +5534,8 @@ input:focus {
 }
 .tp15{
   top: 15px !important;
+}
+.size{
+  font-size: 20px;
+  color: #1976d2;
 }

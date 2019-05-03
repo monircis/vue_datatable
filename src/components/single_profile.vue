@@ -1,5 +1,6 @@
 <template>
   <div class="form-modal form-block">
+
     <div class="row">
       <div class="col-md-12">
         <div class="tp-area mb15">
@@ -91,7 +92,7 @@
         let vm = this;
         //get  profile  information
         axios.get("https://command-center-apis.herokuapp.com/profile/"+profile_id).then(function (response) {
-          console.log(response.data);
+          console.log(response.data.data);
           vm.profileDetail= response.data.data;
           //end loading
           vm.$parent.endLoading();
@@ -134,8 +135,8 @@
             profileId: this.$route.params.id,
           }
         ).then(function (response) {
-          console.log(response.data);
-         // vm.profileDetail = response.data.data;
+          console.log(response.data.data);
+         vm.profileDetail = response.data.data;
           //end loading
           vm.$parent.endLoading();
         })

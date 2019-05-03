@@ -18,7 +18,7 @@
             </router-link>
           </li>
           <li>
-            <router-link v-bind:to="'/linkedin-profile'" class="dashboard">
+            <router-link v-bind:to="'/linkedin-profile-list'" class="dashboard">
               <i class="icon-icommon-accounting sidebar-menu__icon"></i>
               <span class="menu-text menu-text__overwrite">Linkedin Profile</span>
             </router-link>

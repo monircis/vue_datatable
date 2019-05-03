@@ -16,7 +16,7 @@
           <th>Server Name</th>
           <th>Server ID</th>
           <th>Status</th>
-          <th>Action</th>
+          <!--<th>Action</th>-->
         </tr>
         </thead>
         <tbody>
@@ -37,10 +37,10 @@
               </label>
             </div>
           </td>
-          <td width="120px">
-            <router-link class="btn btn-configure btn-sm" v-bind:to="'droplet-details/'+droplet.id">Configure
-            </router-link>
-          </td>
+          <!--<td width="120px">-->
+            <!--<router-link class="btn btn-configure btn-sm" v-bind:to="'droplet-details/'+droplet.id">Configure-->
+            <!--</router-link>-->
+          <!--</td>-->
 
         </tr>
         </tbody>
