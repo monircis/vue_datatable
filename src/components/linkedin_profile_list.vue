@@ -29,7 +29,7 @@
           <td class="text-left" :id="'Proxy_Id_'+Profile._id">
             {{ Profile.proxy_ip }}
           </td>
-          <td :id="'profile_'+Profile._id">
+          <td>
 
          <button class="btn btn-danger btn-xs" :id="'remove_'+Profile._id" @click="removeProxy(index)" v-if="Profile.proxy_ip.length">
               Remove
