@@ -68,7 +68,7 @@
     },
     created: function () {
       this.loadApiData();
-      this.dropletDetails();
+      //this.dropletDetails();
     },
     methods: {
       loadApiData: function () {
