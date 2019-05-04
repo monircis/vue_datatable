@@ -1,6 +1,6 @@
 <template>
   <div class="form-modal form-block dropletarea">
-    <div class="tp-area"><h3 class="pull-left">Linkedin Profile List</h3>
+    <div class="tp-area"><h3 class="pull-left">Linkedin Profile List </h3>
 
       <div class="search-input width450">
         <router-link class="btn-reset pull-right" v-bind:to="'/linkedin-profile'"> Create New Linkedin Profile
@@ -14,8 +14,8 @@
           <th>#</th>
           <th>Linkedin Email</th>
           <th>Country</th>
-          <th>IP</th>
-          <th width="120px">Assign IP</th>
+          <th>Proxy IP</th>
+          <th width="120px"></th>
           <th>Action</th>
         </tr>
         </thead>
@@ -32,7 +32,7 @@
           <td>
 
          <button class="btn btn-danger btn-xs" :id="'remove_'+Profile._id" @click="removeProxy(index)" v-if="Profile.proxy_ip.length">
-              Remove
+              Remove Proxy
             </button>
        <button class="btn base-bg btn-xs" :id="'assign_'+Profile._id" @click="assignProxy(index)" v-else>
               Assign Proxy
@@ -77,7 +77,7 @@
       loadApiData: function () {
         let vm = this;
         vm.$parent.startLoading();
-        axios.get("https://command-center-apis.herokuapp.com/profile/")
+        axios.get(this.globalUrl+"/profile/")
           .then(function (response) {
             //console.log(response.data);
             let tempData =response.data.data;
@@ -103,7 +103,7 @@
       assignProxy: function (index) {
         let vm = this;
         let getProfile = this.linkedinProfiles[index];
-        axios.post("https://command-center-apis.herokuapp.com/proxy/assign-proxy",
+        axios.post(this.globalUrl+"/proxy/assign-proxy",
           {
             profileId: getProfile._id,
           }
@@ -125,7 +125,7 @@
       removeProxy: function (index) {
         let vm = this;
         let getProfile = this.linkedinProfiles[index];
-        axios.post("https://command-center-apis.herokuapp.com/proxy/remove-proxy",
+        axios.post(this.globalUrl+"/proxy/remove-proxy",
           {
             profileId: getProfile._id,
           }

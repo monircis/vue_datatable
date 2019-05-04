@@ -1,11 +1,11 @@
 <template>
   <div class="form-modal form-block" >
-   <div v-for="(profile, index) in profileDetail">
+   <div>
     <div class="row">
       <div class="col-md-12">
         <div class="tp-area mb15">
-          <h3 class="pull-left">Linkedin Profile Detail</h3>
-          <router-link class="btn-reset pull-right" v-bind:to="'/linkedin-profile-list'"> Linkedin Profile List's
+          <h3 class="pull-left">LinkedIn Profile Detail</h3>
+          <router-link class="btn-reset pull-right" v-bind:to="'/linkedin-profile-list'"> LinkedIn Profile List
           </router-link>
         </div>
       </div>
@@ -13,17 +13,17 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>
-            linkedin Email:
+            LinkedIn Email:
           </label>
-          <input type="text" class="form-control" v-model="profile.linkedinEmail" readonly>
+          <input type="text" class="form-control" v-model="profileDetail.linkedinEmail" readonly>
         </div><!--end single-->
       </div>
       <div class="col-md-6">
         <div class="form-group">
           <label>
-            linkedin Password:
+            LinkedIn Password:
           </label>
-          <input type="text" class="form-control" v-model="profile.linkedinPassword">
+          <input type="text" class="form-control" v-model="profileDetail.linkedinPassword">
         </div><!--end single-->
       </div>
       <div class="col-md-12">
@@ -39,7 +39,7 @@
           <label>
             Daily Page Limit:
           </label>
-          <input type="number" class="form-control" v-model="profile.daily_page_limit">
+          <input type="number" class="form-control" v-model="profileDetail.daily_page_limit">
         </div><!--end single-->
       </div>
       <div class="col-md-6">
@@ -47,7 +47,7 @@
           <label>
             Country:
           </label>
-          <input type="text" class="form-control" v-model="profile.country" readonly="">
+          <input type="text" class="form-control" v-model="profileDetail.country" readonly="">
         </div><!--end single-->
       </div>
       <div class="col-md-12">
@@ -55,18 +55,18 @@
           <label>
             Proxy:
           </label>
-          <input type="text" class="form-control" v-model="profile.proxy_ip"  disabled>
+          <input type="text" class="form-control" v-model="profileDetail.proxy_ip"  disabled>
         </div><!--end single-->
       </div>
     </div>
     <div class="action-footer mt15">
-      <button class="btn btn-danger btn-xs pull-left" @click="removeProxy(index)" v-if="profile.proxy_ip.length">
-        Remove
+      <button class="btn btn-danger btn-xs pull-left" @click="removeProxy" v-if="profileDetail.proxy_ip.length">
+        Remove Proxy
       </button>
-      <button class="btn base-bg btn-xs pull-left"  @click="assignProxy(index)" v-else>
+      <button class="btn base-bg btn-xs pull-left"  @click="assignProxy" v-else>
         Assign Proxy
       </button>
-      <button class="btn base-bg" @click="updateUser()" value="submit">
+      <button class="btn base-bg" @click="updateUser" value="submit">
         Update Now
       </button>
     </div>
@@ -81,7 +81,7 @@
   export default {
     data() {
       return {
-        profileDetail: []
+        profileDetail: {}
       }
     },
     mounted: function () {
@@ -92,29 +92,26 @@
         let profile_id = this.$route.params.id;
         let vm = this;
         //get  profile  information
-        axios.get("https://command-center-apis.herokuapp.com/profile/"+profile_id).then(function (response) {
+        axios.get(this.globalUrl+"/profile/"+profile_id).then(function (response) {
           console.log(response.data.data);
-          let tempData = response.data.data;
-            if (!tempData.hasOwnProperty('proxy_ip')) {
-              tempData.proxy_ip=''
+          vm.profileDetail= response.data.data;
+            if (! vm.profileDetail.hasOwnProperty('proxy_ip')) {
+              vm.profileDetail.proxy_ip=''
             }
-            vm.profileDetail.push(tempData);
-          //vm.profileDetail= response.data.data;
-          //end loading
+            console.log(vm.profileDetail);
+         //end loading
           vm.$parent.endLoading();
         })
       },
       updateUser: function () {
         let vm = this;
-        console.log(this.profileDetail);
-        axios.post("https://command-center-apis.herokuapp.com/profile/update-profile",
+        //console.log(vm.profileDetail.linkedinPassword);
+        axios.post(this.globalUrl+"/profile/update-profile",
           {
-            linkedinEmail: this.profileDetail.linkedinEmail,
-            linkedinPassword: this.profileDetail.linkedinPassword,
-            country: this.profileDetail.country,
+            linkedinPassword: vm.profileDetail.linkedinPassword,
             profileId: this.$route.params.id,
-            user_agent: this.profileDetail.user_agent,
-            daily_page_limit: this.profileDetail.daily_page_limit
+            user_agent: vm.profileDetail.user_agent,
+            daily_page_limit: vm.profileDetail.daily_page_limit
           }
         ).then(function (response) {
           console.log(response.data);
@@ -126,7 +123,6 @@
           });
         })
           .catch((response) => {
-            alert();
             vm.$parent.endLoading();
             vm.$toasted.show('Something wrong  Try again.', {
               type: 'error',
@@ -134,17 +130,17 @@
             });
           });
       },
-      assignProxy: function (index) {
+      assignProxy: function () {
         let vm = this;
-        let getProfile = this.profileDetail[index];
-        console.log(getProfile);
-        axios.post("https://command-center-apis.herokuapp.com/proxy/assign-proxy",
+        // let getProfile = this.profileDetail;
+        // console.log(getProfile);
+        axios.post(this.globalUrl+"/proxy/assign-proxy",
           {
-            profileId: getProfile._id,
+            profileId: this.$route.params.id
           }
         ).then(function (response) {
           console.log(response.data.data);
-          vm.profileDetail[index].proxy_ip=response.data.data.proxy_ip;
+          vm.profileDetail.proxy_ip=response.data.data.proxy_ip;
           //vm.profileDetail[index]=response.data.data;
           //end loading
           vm.$parent.endLoading();
@@ -158,17 +154,17 @@
             });
           });
       },
-      removeProxy: function (index) {
+      removeProxy: function () {
         let vm = this;
-        let getProfile = this.profileDetail[index];
-        console.log(getProfile);
-        axios.post("https://command-center-apis.herokuapp.com/proxy/remove-proxy",
+        // let getProfile = this.profileDetail[index];
+        // console.log(getProfile);
+        axios.post(this.globalUrl+"/proxy/remove-proxy",
           {
-            profileId: getProfile._id,
+            profileId: this.$route.params.id
           }
         ).then(function (response) {
           console.log(response.data.data);
-          vm.profileDetail[index].proxy_ip='';
+          vm.profileDetail.proxy_ip='';
           //end loading
           vm.$parent.endLoading();
         })

@@ -24,6 +24,17 @@ Vue.filter('formatDateWithoutTime', function (value) {
 });
 Vue.config.productionTip = false;
 
+//global variable
+Vue.mixin({
+  data() {
+    return {
+      get globalUrl() {
+        return "https://command-center-apis.herokuapp.com";
+      }
+    };
+  }
+});
+
 const options = {
   confirmButtonColor: '#41b882',
   cancelButtonColor: '#ff7674'
@@ -54,5 +65,8 @@ new Vue({
   el: '#app',
   router,
   components: {App},
-  template: '<App/>'
+  template: '<App/>',
+  created() {
+    this.globalUrl = "This won't change it";
+  }
 });

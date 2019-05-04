@@ -13,20 +13,29 @@
         <ul class="nav panel-list menu-accordion">
           <li>
             <router-link v-bind:to="'/'" class="active dashboard">
-              <i class="icon-icommon-accounting sidebar-menu__icon"></i>
-              <span class="menu-text menu-text__overwrite">Droplets</span>
+              <i class="fa fa-server fa-2x" aria-hidden="true"></i>
+
+              <span class="menu-text menu-text__overwrite">Machines</span>
             </router-link>
           </li>
           <li>
             <router-link v-bind:to="'/linkedin-profile-list'" class="dashboard">
-              <i class="icon-icommon-accounting sidebar-menu__icon"></i>
+              <i class="fa fa-users fa-2x"></i>
               <span class="menu-text menu-text__overwrite">Linkedin Profile</span>
             </router-link>
           </li>
           <li>
-            <router-link v-bind:to="'/proxys'" class="dashboard">
-              <i class="icon-icommon-accounting sidebar-menu__icon"></i>
-              <span class="menu-text menu-text__overwrite">proxys</span>
+            <router-link v-bind:to="'/proxies'" class="dashboard">
+              <i class="fa fa-connectdevelop fa-2x" aria-hidden="true"></i>
+
+              <span class="menu-text menu-text__overwrite">Proxies</span>
+            </router-link>
+          </li>
+          <li>
+            <router-link v-bind:to="'/proxy-zone-list'" class="dashboard">
+              <i class="fa fa-map-marker fa-3x" aria-hidden="true"></i>
+
+              <span class="menu-text menu-text__overwrite">Proxy Zone</span>
             </router-link>
           </li>
 

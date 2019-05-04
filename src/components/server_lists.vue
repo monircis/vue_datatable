@@ -1,10 +1,10 @@
 <template>
   <div class="form-modal form-block dropletarea">
     <div class="tp-area">
-      <h3 class="pull-left">Droplet List</h3>
+      <h3 class="pull-left">Machine List </h3>
       <div class="search-input width450">
         <i class="icon-icommon-search sidebar-menu__icon"></i>
-        <input type="text" class="form-control pull-right  searchbar" placeholder="Search Droplet Using Name or ID"
+        <input type="text" class="form-control pull-right  searchbar" placeholder="Search Machine  Using Name or ID"
                v-model="searchDroplet">
       </div>
     </div>
@@ -12,9 +12,9 @@
       <table class="table table-bordered">
         <thead>
         <tr>
-          <th>Server</th>
-          <th>Server Name</th>
-          <th>Server ID</th>
+          <th>OS</th>
+          <th>Machine Name</th>
+          <th>Machine ID</th>
           <th>Status</th>
           <!--<th>Action</th>-->
         </tr>
@@ -73,7 +73,7 @@
         var vm = this;
         //start loading
         vm.$parent.startLoading();
-        axios.get("https://command-center-apis.herokuapp.com/machine/")
+        axios.get(this.globalUrl+"/machine/")
           .then(function (response) {
             //console.log(response.data);
             let tempData = response.data.data;
@@ -108,7 +108,7 @@
         if (state == true) {
           //alert(dropletID);
           //console.log(state);
-          axios.put("https://command-center-apis.herokuapp.com/machine/start/" + dropletID + '/', {
+          axios.put(this.globalUrl+"/machine/start/" + dropletID + '/', {
             headers: {"Content-Type": 'application/json'},
             timeout: 2 * 60 * 1000
           })
@@ -131,7 +131,7 @@
               $(loader).css({"display": "none"});
             });
         } else {
-          axios.put("https://command-center-apis.herokuapp.com/machine/stop/" + dropletID + '/', {headers: {"Content-Type": 'application/json'}})
+          axios.put(this.globalUrl+"/machine/stop/" + dropletID + '/', {headers: {"Content-Type": 'application/json'}})
             .then(function (response) {
               vm.$toasted.show('Server Is OFF  :: ' + getdroplet.name, {
                 type: 'error',

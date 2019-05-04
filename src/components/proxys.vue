@@ -28,7 +28,7 @@
               <td>{{ proxy.active }}</td>
               <td>
                 <div v-if="proxy.profileId">
-                  <router-link class="btn btn-configure btn-sm" v-bind:to="'single-profile/'+proxy.profileId">Linked Profile
+                  <router-link class="btn btn-configure btn-sm" v-bind:to="'single-profile/'+proxy.profileId">Connected Profile
                   </router-link>
                 </div>
               </td>
@@ -116,7 +116,7 @@
         var vm = this;
         //start loading
         vm.$parent.startLoading();
-        axios.get("https://command-center-apis.herokuapp.com/proxy/")
+        axios.get(this.globalUrl+"/proxy/")
           .then(function (response) {
             vm.proxys =response.data.data;
             //end loading

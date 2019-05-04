@@ -35,7 +35,7 @@
         let vm = this;
         //start loading
         vm.$parent.startLoading();
-        axios.post('https://command-center-apis.herokuapp.com/user/login/',
+        axios.post(this.globalUrl+'/user/login/',
           {
             username: this.username,
             password: this.password,
@@ -57,7 +57,7 @@
       },
       getProfile() {
         let vm = this;
-        axios.get('https://command-center-apis.herokuapp.com/user/login/')
+        axios.get(this.globalUrl+'/user/login/')
           .then((response) => {
             console.log(response.data.data);
             localStorage.setItem("username", response.data.data.username);

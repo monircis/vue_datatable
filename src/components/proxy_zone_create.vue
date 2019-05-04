@@ -3,8 +3,8 @@
     <div class="row">
       <div class="col-md-12">
         <div class="tp-area mb15">
-          <h3 class="pull-left">Create New LinkedIn Profile</h3>
-          <router-link class="btn-reset pull-right" v-bind:to="'/linkedin-profile-list'"> LinkedIn Profile List
+          <h3 class="pull-left">Create New Proxy Zone</h3>
+          <router-link class="btn-reset pull-right" v-bind:to="'/proxy-zone-list'"> Proxy Zone List's
           </router-link>
         </div>
       </div>
@@ -12,17 +12,25 @@
       <div class="col-md-12">
         <div class="form-group">
           <label>
-            LinkedIn Email:
+            Zone:
           </label>
-          <input type="text" class="form-control" v-model="linkedinEmail">
+          <input type="text" class="form-control" v-model="zone">
         </div><!--end single-->
       </div>
       <div class="col-md-6">
         <div class="form-group">
           <label>
-            LinkedIn Password:
+            Username:
           </label>
-          <input type="text" class="form-control" v-model="linkedinPassword">
+          <input type="text" class="form-control" v-model="username">
+        </div><!--end single-->
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>
+            Password:
+          </label>
+          <input type="text" class="form-control" v-model="password">
         </div><!--end single-->
       </div>
       <div class="col-md-6">
@@ -44,7 +52,7 @@
       </div>
     </div>
     <div class="action-footer mt15">
-      <button class="btn base-bg" @click="createUser()" value="submit">
+      <button class="btn base-bg" @click="createZone()" value="submit">
         Save Now
       </button>
     </div>
@@ -59,34 +67,37 @@
     data() {
       return {
         //dropletDetail: {}
-        linkedinEmail: '',
-        linkedinPassword: '',
+        zone: '',
+        username: '',
+        password: '',
         country:  ''
       }
     },
     methods: {
-      createUser: function () {
+      createZone: function () {
         let vm = this;
-        if (vm.linkedinEmail && vm.linkedinPassword && vm.country) {
+        if (vm.zone && vm.username  && vm.password && vm.country) {
           //alert(vm.password);
           //start loading
           vm.$parent.startLoading();
-          axios.post(this.globalUrl+"/profile/create-profile/",
+          axios.post(this.globalUrl+"/luminati/zone/create",
             {
-              linkedinEmail: vm.linkedinEmail,
-              linkedinPassword: vm.linkedinPassword,
+              zone: vm.zone,
+              username: vm.username,
+              password: vm.password,
               country: vm.country
             }
           ).then(function (response) {
             console.log(response.data);
             //end loading
             vm.$parent.endLoading();
-            vm.$toasted.show('User Created Successfully.', {
+            vm.$toasted.show('Zone Created Successfully.', {
               type: 'success',
               icon: 'fa-exclamation-triangle'
             });
-            vm.linkedinPassword= '';
-            vm.linkedinPassword= '';
+            vm.zone= '';
+            vm.username= '';
+            vm.password= '';
             vm.country= '';
           })
             .catch((response) => {
