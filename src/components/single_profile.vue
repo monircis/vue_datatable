@@ -75,12 +75,9 @@
 </template>
 
 <script>
+  import axios from 'axios';
   const $ = require('jquery');
   window.$ = $;
-  $(function () {
-  });
-  import axios from 'axios';
-
   export default {
     data() {
       return {

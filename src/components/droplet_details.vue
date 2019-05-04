@@ -142,15 +142,9 @@
 </template>
 
 <script>
+  import axios from 'axios';
   const $ = require('jquery');
   window.$ = $;
-  //click a date and  catch  the date
-  $(function () {
-    //alert();
-  });
-
-  import axios from 'axios';
-
   export default {
     data() {
       return {

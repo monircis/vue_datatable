@@ -54,8 +54,6 @@
   import axios from 'axios';
   const $ = require('jquery');
   window.$ = $;
-  $(function () {
-  });
   export default {
     data() {
       return {

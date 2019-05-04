@@ -1,11 +1,5 @@
 <template>
   <div class="form-modal form-block">
-
-    <!--<input type="text" v-model="postTitle" placeholder="title"/>-->
-    <!--<input type="text" v-model="postBody" placeholder="body"/>-->
-    <!--<input type="button" @click="createPost()" value="submit" class="btn  btn-danger">-->
-
-
     <div class="row">
       <div class="col-md-12">
         <div class="tp-area mb15">
@@ -58,12 +52,9 @@
 </template>
 
 <script>
+  import axios from 'axios';
   const $ = require('jquery');
   window.$ = $;
-  $(function () {
-  });
-  import axios from 'axios';
-
   export default {
     data() {
       return {
@@ -113,7 +104,6 @@
             icon: 'fa-exclamation-triangle'
           });
         }
-
       }
     },
   };
