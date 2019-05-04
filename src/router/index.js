@@ -5,6 +5,7 @@ import dropletdetails from '@/components/droplet_details';
 import newLinkedinProfile from '@/components/linkedin_profile_create';
 import LinkedinProfileLists from '@/components/linkedin_profile_list';
 import singleProfile from '@/components/single_Profile';
+import proxy from '@/components/proxys';
 import login from '@/components/login';
 import VueSweetalert2 from 'vue-sweetalert2';
 Vue.use(VueSweetalert2);
@@ -40,6 +41,12 @@ export default new Router({
       path: '/single-profile/:id',
       name: 'single-profile',
       component: singleProfile,
+      root:  '/'
+    },
+    {
+      path: '/proxys',
+      name: 'proxys',
+      component: proxy,
       root:  '/'
     },
     {

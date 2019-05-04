@@ -23,6 +23,12 @@
               <span class="menu-text menu-text__overwrite">Linkedin Profile</span>
             </router-link>
           </li>
+          <li>
+            <router-link v-bind:to="'/proxys'" class="dashboard">
+              <i class="icon-icommon-accounting sidebar-menu__icon"></i>
+              <span class="menu-text menu-text__overwrite">proxys</span>
+            </router-link>
+          </li>
 
         </ul>
       </div>

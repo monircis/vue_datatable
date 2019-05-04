@@ -5539,3 +5539,7 @@ input:focus {
   font-size: 20px;
   color: #1976d2;
 }
+.dropletarea .nav-tabs  li.active  a{
+  color: #1976d2;
+  border: 1px solid #1976d2;
+}
