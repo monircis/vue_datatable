@@ -4,7 +4,7 @@ import serverlists from '@/components/server_lists';
 import dropletdetails from '@/components/droplet_details';
 import newLinkedinProfile from '@/components/linkedin_profile_create';
 import LinkedinProfileLists from '@/components/linkedin_profile_list';
-import singleProfile from '@/components/single_Profile';
+import singleProfile from '@/components/singleprofile';
 import proxy from '@/components/proxys';
 import createProxyZone from '@/components/proxy_zone_create';
 import ProxyZoneList from '@/components/proxy_zone_list';
