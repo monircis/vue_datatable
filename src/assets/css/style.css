@@ -2918,7 +2918,7 @@ input:focus {
   color: #fff;
 }
 
-.sidebar-menu li a.active {
+.sidebar-menu li a.active,.sidebar-menu li a.router-link-exact-active.router-link-active {
   background: #1976d2;
   color: #fff;
 }

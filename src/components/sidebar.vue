@@ -12,30 +12,29 @@
       <div class="sidebar-menu">
         <ul class="nav panel-list menu-accordion">
           <li>
-            <router-link v-bind:to="'/'" class="active dashboard">
-              <i class="fa fa-server fa-2x" aria-hidden="true"></i>
 
-              <span class="menu-text menu-text__overwrite">Machines</span>
+            <router-link v-bind:to="'/'" v-on:click="setActive('home')" :class="{ active: isActive('home') }">
+              <img src="@/assets/images/database.png" height="25px"/>
+              <span class="menu-text menu-text__overwrite mt5">Machines</span>
             </router-link>
           </li>
           <li>
-            <router-link v-bind:to="'/linkedin-profile-list'" class="dashboard">
-              <i class="fa fa-users fa-2x"></i>
-              <span class="menu-text menu-text__overwrite">Linkedin Profile</span>
+            <router-link v-bind:to="'/linkedin-profile-list'" v-on:click="setActive('linkedin-profile-list')" :class="{ active: isActive('linkedin-profile-list') }" >
+              <img src="@/assets/images/network.png" height="30px"/>
+              <span class="menu-text menu-text__overwrite mt5">Linkedin Profile</span>
             </router-link>
           </li>
           <li>
-            <router-link v-bind:to="'/proxies'" class="dashboard">
-              <i class="fa fa-connectdevelop fa-2x" aria-hidden="true"></i>
+            <router-link v-bind:to="'/proxies'" v-on:click="setActive('proxies')" :class="{ active: isActive('proxies') }">
 
-              <span class="menu-text menu-text__overwrite">Proxies</span>
+                <img src="@/assets/images/519151.png" height="30px"/>
+              <span class="menu-text menu-text__overwrite mt5">Proxies</span>
             </router-link>
           </li>
           <li>
-            <router-link v-bind:to="'/proxy-zone-list'" class="dashboard">
-              <i class="fa fa-map-marker fa-3x" aria-hidden="true"></i>
-
-              <span class="menu-text menu-text__overwrite">Proxy Zone</span>
+            <router-link v-bind:to="'/proxy-zone-list'" v-on:click="setActive('proxy-zone-list')" :class="{ active: isActive('proxy-zone-list') }">
+              <img src="@/assets/images/placeholder.png" height="30px"/>
+              <span class="menu-text menu-text__overwrite mt5">Proxy Zone</span>
             </router-link>
           </li>
 
@@ -45,5 +44,17 @@
   </div>
 </template>
 <script>
+  export default {
+    data() {
+      return { activeItem: '' }
+    },
+    methods: {
+      isActive: function (menuItem) {
+        return this.activeItem === menuItem
+      },
+      setActive: function (menuItem) {
+        this.activeItem = menuItem // no need for Vue.set()
+      }
+    }
+  }
 </script>
-

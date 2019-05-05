@@ -18,7 +18,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home Page',
+      name: 'Home',
       component: serverlists,
       root:  '/'
     },
