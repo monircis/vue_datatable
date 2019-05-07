@@ -19,7 +19,7 @@
             <tr>
               <th>Zone</th>
               <th>username</th>
-              <th>password</th>
+              <th>IP pool size</th>
               <th>Country</th>
               <th width="120px">Action</th>
             </tr>
@@ -28,7 +28,7 @@
             <tr v-for="(zone, index) in zones">
               <td>{{ zone.zone }}</td>
               <td>{{ zone.username }}</td>
-              <td>{{ zone.password }}</td>
+              <td>{{ zone.pool_size }}</td>
               <td>{{ zone.country }}</td>
               <td>
                 <div>
@@ -41,60 +41,7 @@
           </table>
         </div>
       </div>
-      <div id="active" class="tab-pane fade">
-        <div class="table-responsive droplets mt15">
-          <table class="table table-bordered">
-            <thead>
-            <tr>
-              <th>Proxy</th>
-              <th>Country</th>
-              <th>Status</th>
-              <th width="120px">Profile Url</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!--<tr v-for="proxy in proxys" v-if="proxy.active">-->
-              <!--<td>{{ proxy.ip }}</td>-->
-              <!--<td>{{ proxy.country }}</td>-->
-              <!--<td>{{ proxy.active }}</td>-->
-              <!--<td>-->
-                <!--<div v-if="proxy.profileId">-->
-                  <!--<router-link class="btn btn-configure btn-sm" v-bind:to="'single-profile/'+proxy.profileId">Linked Profile-->
-                  <!--</router-link>-->
-                <!--</div>-->
-              <!--</td>-->
-            <!--</tr>-->
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div id="inactive" class="tab-pane fade">
-        <div class="table-responsive droplets mt15">
-          <table class="table table-bordered">
-            <thead>
-            <tr>
-              <th>Proxy</th>
-              <th>Country</th>
-              <th>Status</th>
-              <th width="120px">Profile Url</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!--<tr v-for="proxy in proxys" v-if="!proxy.active">-->
-              <!--<td>{{ proxy.ip }}</td>-->
-              <!--<td>{{ proxy.country }}</td>-->
-              <!--<td>{{ proxy.active }}</td>-->
-              <!--<td>-->
-                <!--<div v-if="proxy.profileId">-->
-                  <!--<router-link class="btn btn-configure btn-sm" v-bind:to="'single-profile/'+proxy.profileId">Linked Profile-->
-                  <!--</router-link>-->
-                <!--</div>-->
-              <!--</td>-->
-            <!--</tr>-->
-            </tbody>
-          </table>
-        </div>
-      </div>
+
     </div>
 
   </div>

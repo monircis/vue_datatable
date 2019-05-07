@@ -1,59 +1,166 @@
 <template>
   <div class="form-modal form-block dropletarea">
     <div class="tp-area"><h3 class="pull-left">Linkedin Profile List </h3>
+      <router-link class="btn  base-bg ml30   pull-right" v-bind:to="'/linkedin-profile'"> Create New  Profile
+      </router-link>
 
-      <div class="search-input width450">
-        <router-link class="btn-reset pull-right" v-bind:to="'/linkedin-profile'"> Create New Linkedin Profile
-        </router-link>
+        <ul class="nav nav-tabs pull-right">
+        <li class="active"><a data-toggle="tab" href="#all">All</a></li>
+        <li><a data-toggle="tab" href="#Assigned">Assigned</a></li>
+        <li><a data-toggle="tab" href="#Unassigned">Un Assigned</a></li>
+        </ul>
+
+    </div>
+    <div class="tab-content">
+      <div id="all" class="tab-pane fade in active">
+        <div class="table-responsive droplets mt15">
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Linkedin Email</th>
+              <th>Country</th>
+              <th>Proxy IP</th>
+              <th width="120px"></th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(Profile ,index) in linkedinProfiles">
+              <td class="text-center" width="60px">
+                <img class="img-circle img-thumbnail pull-left" :src="url + (index + 1)"/>
+              </td>
+              <td>{{ Profile.linkedinEmail}}</td>
+              <td>{{ Profile.country }}</td>
+              <td class="text-left" :id="'Proxy_Id_'+Profile._id">
+                {{ Profile.proxy_ip }}
+              </td>
+              <td>
+
+                <button class="btn btn-danger btn-xs" :id="'remove_'+Profile._id" @click="removeProxy(index)" v-if="Profile.proxy_ip.length">
+                  Remove Proxy
+                </button>
+                <button class="btn base-bg btn-xs" :id="'assign_'+Profile._id" @click="assignProxy(index)" v-else>
+                  Assign Proxy
+                </button>
+
+                <!--<div v-if="hasIP(Profile)">-->
+                <!--ok-->
+                <!--</div>-->
+                <!--<div v-else>-->
+                <!--none-->
+                <!--</div>-->
+              </td>
+              <td width="40px" class="text-center">
+                <router-link v-bind:to="'single-profile/'+Profile._id">
+                  <span><i aria-hidden="true" class="fa fa-location-arrow size"></i></span>
+                </router-link>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="Assigned" class="tab-pane fade">
+        <div class="table-responsive droplets mt15">
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Linkedin Email</th>
+              <th>Country</th>
+              <th>Proxy IP</th>
+              <th width="120px"></th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(Profile ,index) in linkedinProfiles" v-if="Profile.proxy_ip">
+              <td class="text-center" width="60px">
+                <img class="img-circle img-thumbnail pull-left" :src="url + (index + 1)"/>
+              </td>
+              <td>{{ Profile.linkedinEmail}}</td>
+              <td>{{ Profile.country }}</td>
+              <td class="text-left" :id="'Proxy_Id_'+Profile._id">
+                {{ Profile.proxy_ip }}
+              </td>
+              <td>
+
+                <button class="btn btn-danger btn-xs" :id="'remove_'+Profile._id" @click="removeProxy(index)" v-if="Profile.proxy_ip.length">
+                  Remove Proxy
+                </button>
+                <button class="btn base-bg btn-xs" :id="'assign_'+Profile._id" @click="assignProxy(index)" v-else>
+                  Assign Proxy
+                </button>
+
+                <!--<div v-if="hasIP(Profile)">-->
+                <!--ok-->
+                <!--</div>-->
+                <!--<div v-else>-->
+                <!--none-->
+                <!--</div>-->
+              </td>
+              <td width="40px" class="text-center">
+                <router-link v-bind:to="'single-profile/'+Profile._id">
+                  <span><i aria-hidden="true" class="fa fa-location-arrow size"></i></span>
+                </router-link>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="Unassigned" class="tab-pane fade">
+        <div class="table-responsive droplets mt15">
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Linkedin Email</th>
+              <th>Country</th>
+              <th>Proxy IP</th>
+              <th width="120px"></th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(Profile ,index) in linkedinProfiles" v-if="!Profile.proxy_ip">
+            <td class="text-center" width="60px">
+                <img class="img-circle img-thumbnail pull-left" :src="url + (index + 1)"/>
+              </td>
+              <td>{{ Profile.linkedinEmail}}</td>
+              <td>{{ Profile.country }}</td>
+              <td class="text-left" :id="'Proxy_Id_'+Profile._id">
+                {{ Profile.proxy_ip }}
+              </td>
+              <td>
+
+                <button class="btn btn-danger btn-xs" :id="'remove_'+Profile._id" @click="removeProxy(index)" v-if="Profile.proxy_ip.length">
+                  Remove Proxy
+                </button>
+                <button class="btn base-bg btn-xs" :id="'assign_'+Profile._id" @click="assignProxy(index)" v-else>
+                  Assign Proxy
+                </button>
+
+                <!--<div v-if="hasIP(Profile)">-->
+                <!--ok-->
+                <!--</div>-->
+                <!--<div v-else>-->
+                <!--none-->
+                <!--</div>-->
+              </td>
+              <td width="40px" class="text-center">
+                <router-link v-bind:to="'single-profile/'+Profile._id">
+                  <span><i aria-hidden="true" class="fa fa-location-arrow size"></i></span>
+                </router-link>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-    <div class="table-responsive droplets mt15">
-      <table class="table table-bordered">
-        <thead>
-        <tr>
-          <th>#</th>
-          <th>Linkedin Email</th>
-          <th>Country</th>
-          <th>Proxy IP</th>
-          <th width="120px"></th>
-          <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="(Profile ,index) in linkedinProfiles">
-          <td class="text-center" width="60px">
-            <img class="img-circle img-thumbnail pull-left" :src="url + (index + 1)"/>
-          </td>
-          <td>{{ Profile.linkedinEmail}}</td>
-          <td>{{ Profile.country }}</td>
-          <td class="text-left" :id="'Proxy_Id_'+Profile._id">
-            {{ Profile.proxy_ip }}
-          </td>
-          <td>
 
-         <button class="btn btn-danger btn-xs" :id="'remove_'+Profile._id" @click="removeProxy(index)" v-if="Profile.proxy_ip.length">
-              Remove Proxy
-            </button>
-       <button class="btn base-bg btn-xs" :id="'assign_'+Profile._id" @click="assignProxy(index)" v-else>
-              Assign Proxy
-            </button>
-
-            <!--<div v-if="hasIP(Profile)">-->
-              <!--ok-->
-            <!--</div>-->
-            <!--<div v-else>-->
-              <!--none-->
-            <!--</div>-->
-          </td>
-          <td width="40px" class="text-center">
-            <router-link v-bind:to="'single-profile/'+Profile._id">
-              <span><i aria-hidden="true" class="fa fa-location-arrow size"></i></span>
-            </router-link>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
   </div>
 </template>
 
