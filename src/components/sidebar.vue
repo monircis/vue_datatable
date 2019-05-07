@@ -12,23 +12,9 @@
       <div class="sidebar-menu">
         <ul class="nav panel-list menu-accordion">
           <li>
-
-            <router-link v-bind:to="'/'" v-on:click="setActive('home')" :class="{ active: isActive('home') }">
-              <img src="@/assets/images/database.png" height="25px"/>
-              <span class="menu-text menu-text__overwrite mt5">Machines</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link v-bind:to="'/linkedin-profile-list'" v-on:click="setActive('linkedin-profile-list')" :class="{ active: isActive('linkedin-profile-list') }" >
+            <router-link v-bind:to="'/'"  v-on:click="setActive('home')" :class="{ active: isActive('home') }" >
               <img src="@/assets/images/network.png" height="30px"/>
-              <span class="menu-text menu-text__overwrite mt5">Linkedin Profile</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link v-bind:to="'/proxies'" v-on:click="setActive('proxies')" :class="{ active: isActive('proxies') }">
-
-                <img src="@/assets/images/519151.png" height="30px"/>
-              <span class="menu-text menu-text__overwrite mt5">Proxies</span>
+              <span class="menu-text menu-text__overwrite mt5">LinkedIn Profile</span>
             </router-link>
           </li>
           <li>
@@ -37,6 +23,21 @@
               <span class="menu-text menu-text__overwrite mt5">Proxy Zone</span>
             </router-link>
           </li>
+          <li>
+            <router-link v-bind:to="'/proxies'" v-on:click="setActive('proxies')" :class="{ active: isActive('proxies') }">
+
+              <img src="@/assets/images/519151.png" height="30px"/>
+              <span class="menu-text menu-text__overwrite mt5">Proxies</span>
+            </router-link>
+          </li>
+
+          <li>
+            <router-link v-bind:to="'/machines'" v-on:click="setActive('machines')" :class="{ active: isActive('machines') }" >
+              <img src="@/assets/images/database.png" height="25px"/>
+              <span class="menu-text menu-text__overwrite mt5">Machines</span>
+            </router-link>
+          </li>
+
 
         </ul>
       </div>

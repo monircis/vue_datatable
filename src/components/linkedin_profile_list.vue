@@ -7,7 +7,7 @@
         <ul class="nav nav-tabs pull-right">
         <li class="active"><a data-toggle="tab" href="#all">All</a></li>
         <li><a data-toggle="tab" href="#Assigned">Assigned</a></li>
-        <li><a data-toggle="tab" href="#Unassigned">Un Assigned</a></li>
+        <li><a data-toggle="tab" href="#Unassigned">Unassigned</a></li>
         </ul>
 
     </div>
@@ -67,7 +67,7 @@
             <thead>
             <tr>
               <th>#</th>
-              <th>Linkedin Email</th>
+              <th>LinkedIn Email</th>
               <th>Country</th>
               <th>Proxy IP</th>
               <th width="120px"></th>
@@ -116,7 +116,7 @@
             <thead>
             <tr>
               <th>#</th>
-              <th>Linkedin Email</th>
+              <th>LinkedIn Email</th>
               <th>Country</th>
               <th>Proxy IP</th>
               <th width="120px"></th>

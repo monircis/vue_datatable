@@ -19,7 +19,7 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: serverlists,
+      component: LinkedinProfileLists,
       root:  '/'
     },
     {
@@ -35,9 +35,9 @@ export default new Router({
       root:  '/'
     },
     {
-      path: '/linkedin-profile-list',
-      name: 'linkedin-profile-list',
-      component: LinkedinProfileLists,
+      path: '/machines',
+      name: 'machines',
+      component: serverlists,
       root:  '/'
     },
     {

@@ -5,7 +5,7 @@
       <div class="col-md-12">
         <div class="tp-area mb15">
           <h3 class="pull-left">LinkedIn Profile Detail</h3>
-          <router-link class="btn-reset pull-right" v-bind:to="'/linkedin-profile-list'"> LinkedIn Profile List
+          <router-link class="btn-reset pull-right" v-bind:to="'/'"> LinkedIn Profile List
           </router-link>
         </div>
       </div>
