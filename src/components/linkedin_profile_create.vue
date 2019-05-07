@@ -31,14 +31,14 @@
             Country:
           </label>
           <select v-model="country" class="form-control show-select">
-            <option value="USA">USA</option>
-            <option value="Hong Kong">Hong Kong</option>
-            <option value="India">India</option>
-            <option value="Canada">Canada</option>
-            <option value="Singapore">Singapore</option>
-            <option value="England">England</option>
-            <option value="Australia">Australia</option>
-            <option value="South Africa">South Africa</option>
+            <option value="US">US - United States</option>
+            <option value="IN">IN - India</option>
+            <option value="HK">HK - Hong Kong</option>
+            <option value="CA">CA - Canada</option>
+            <option value="SG">SG - Singapore</option>
+            <option value="UK">UK - United Kingdom</option>
+            <option value="AU">AU - Australia</option>
+            <option value="ZA">ZA - South Africa</option>
           </select>
         </div><!--end single-->
       </div>
