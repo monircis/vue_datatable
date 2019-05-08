@@ -232,6 +232,7 @@
       removeProxy: function (index) {
         let vm = this;
         let getProfile = this.linkedinProfiles[index];
+        console.log(getProfile);
         axios.post(this.globalUrl+"/proxy/remove-proxy",
           {
             profileId: getProfile._id,

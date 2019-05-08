@@ -8,6 +8,7 @@ import singleProfile from '@/components/singleprofile';
 import proxy from '@/components/proxys';
 import createProxyZone from '@/components/proxy_zone_create';
 import ProxyZoneList from '@/components/proxy_zone_list';
+import blacklistedProxy from '@/components/blacklisted_proxys';
 import singlezone from '@/components/single_zone';
 import login from '@/components/login';
 import VueSweetalert2 from 'vue-sweetalert2';
@@ -64,6 +65,13 @@ export default new Router({
       component: ProxyZoneList,
       root:  '/'
     },
+    {
+      path: '/blacklisted-proxy',
+      name: 'blacklisted-proxy',
+      component: blacklistedProxy,
+      root:  '/'
+    },
+
     {
       path: '/single-zone/:id',
       name: 'single-zone',

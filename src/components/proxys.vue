@@ -18,14 +18,19 @@
               <th>Proxy</th>
               <th>Country</th>
               <th>Status</th>
+              <th width="120px"></th>
               <th width="120px">Profile Url</th>
             </tr>
             </thead>
             <tbody>
-            <tr v-for="proxy in proxys">
+            <tr v-for="(proxy,index) in proxys">
               <td>{{ proxy.ip }}</td>
               <td>{{ proxy.country }}</td>
               <td>{{ proxy.active }}</td>
+              <td>
+                <button class="btn btn-danger btn-sm" @click="blacklist(index)">Blacklist
+                </button>
+              </td>
               <td>
                 <div v-if="proxy.profileId">
                   <router-link class="btn btn-configure btn-sm" v-bind:to="'single-profile/'+proxy.profileId">Connected Profile
@@ -45,14 +50,16 @@
               <th>Proxy</th>
               <th>Country</th>
               <th>Status</th>
+
               <th width="120px">Profile Url</th>
             </tr>
             </thead>
             <tbody>
-            <tr v-for="proxy in proxys" v-if="proxy.active">
+            <tr v-for="(proxy , index) in proxys" v-if="proxy.active">
               <td>{{ proxy.ip }}</td>
               <td>{{ proxy.country }}</td>
               <td>{{ proxy.active }}</td>
+
               <td>
                 <div v-if="proxy.profileId">
                   <router-link class="btn btn-configure btn-sm" v-bind:to="'single-profile/'+proxy.profileId">Linked Profile
@@ -118,6 +125,7 @@
         vm.$parent.startLoading();
         axios.get(this.globalUrl+"/proxy/")
           .then(function (response) {
+            console.log(response.data.data);
             vm.proxys =response.data.data;
             //end loading
             vm.$parent.endLoading();
@@ -127,6 +135,30 @@
             //console.log(response);
           });
       },
+      blacklist: function (index) {
+        let vm = this;
+        let getproxy = this.proxys[index];
+        axios.post(this.globalUrl+"/proxy/black-list-proxy",
+          {
+            ip: getproxy.ip,
+            zone: getproxy.zone,
+          }
+        ).then(function (response) {
+          console.log(response.data.data);
+          vm.proxys[index]=response.data.data;
+          vm.$toasted.show('Ip blacklisted Successfully.', {
+            type: 'success',
+            icon: 'fa-exclamation-triangle'
+          });
+        })
+          .catch((response) => {
+            console.log(response);
+            vm.$toasted.show('Something wrong  Try again.', {
+              type: 'error',
+              icon: 'fa-exclamation-triangle'
+            });
+          });
+      }
     },
   };
 </script>

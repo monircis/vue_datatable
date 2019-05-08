@@ -77,13 +77,15 @@
         //dropletDetail: {}
         linkedinEmail: '',
         linkedinPassword: '',
+        user_agent:  '',
+        daily_page_limit:  '',
         country:  ''
       }
     },
     methods: {
       createUser: function () {
         let vm = this;
-        if (vm.linkedinEmail && vm.linkedinPassword && vm.country) {
+        if (vm.linkedinEmail && vm.linkedinPassword && vm.user_agent && vm.daily_page_limit && vm.country) {
           //alert(vm.password);
           //start loading
           vm.$parent.startLoading();
