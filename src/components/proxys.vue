@@ -145,7 +145,7 @@
           }
         ).then(function (response) {
           console.log(response.data.data);
-          vm.proxys[index]=response.data.data;
+          vm.proxys.splice(index, 1);
           vm.$toasted.show('Ip blacklisted Successfully.', {
             type: 'success',
             icon: 'fa-exclamation-triangle'
