@@ -9,7 +9,7 @@
         </div>
       </div>
 
-      <div class="col-md-12">
+      <div class="col-md-6">
         <div class="form-group">
           <label>
             LinkedIn Email:
@@ -23,6 +23,22 @@
             LinkedIn Password:
           </label>
           <input type="text" class="form-control" v-model="linkedinPassword">
+        </div><!--end single-->
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>
+            User Agent:
+          </label>
+          <input type="text" class="form-control" v-model="user_agent">
+        </div><!--end single-->
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>
+            Daily Page Limit:
+          </label>
+          <input type="number" class="form-control" v-model="daily_page_limit">
         </div><!--end single-->
       </div>
       <div class="col-md-6">
@@ -75,6 +91,8 @@
             {
               linkedinEmail: vm.linkedinEmail,
               linkedinPassword: vm.linkedinPassword,
+              user_agent: vm.user_agent,
+              daily_page_limit: vm.daily_page_limit,
               country: vm.country
             }
           ).then(function (response) {
@@ -85,8 +103,10 @@
               type: 'success',
               icon: 'fa-exclamation-triangle'
             });
+            vm.linkedinEmail= '';
             vm.linkedinPassword= '';
-            vm.linkedinPassword= '';
+            vm.user_agent= '';
+            vm.daily_page_limit= '';
             vm.country= '';
           })
             .catch((response) => {

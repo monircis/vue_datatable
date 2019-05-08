@@ -21,6 +21,7 @@
               <th>username</th>
               <th>IP pool size</th>
               <th>Country</th>
+              <th></th>
               <th width="120px">Action</th>
             </tr>
             </thead>
@@ -30,6 +31,10 @@
               <td>{{ zone.username }}</td>
               <td>{{ zone.pool_size }}</td>
               <td>{{ zone.country }}</td>
+              <td>
+                <button type="button" class="btn btn-configure btn-sm black-text" @click="sync_zone(index)">Sync Now
+                </button>
+              </td>
               <td>
                 <div>
                   <router-link class="btn btn-configure btn-sm"  v-bind:to="'/single-zone/'+zone._id">IPs
@@ -64,7 +69,7 @@
     },
     methods: {
       loadApiData: function () {
-        var vm = this;
+        let vm = this;
         //start loading
         vm.$parent.startLoading();
         axios.get(this.globalUrl+"/luminati/zone/")
@@ -78,19 +83,30 @@
             //console.log(response);
           });
       },
-      // getZoneDetail: function (index) {
-      //   var vm = this;
-      //   axios.post(this.globalUrl+"/luminati/zone/")
-      //     .then(function (response) {
-      //       vm.zones =response.data.data;
-      //       //end loading
-      //       vm.$parent.endLoading();
-      //     })
-      //     .catch((response) => {
-      //       //end loading
-      //       //console.log(response);
-      //     });
-      // }
+      sync_zone: function (index) {
+        let vm = this;
+        let getZone = this.zones[index];
+        axios.post(this.globalUrl+"/luminati/zone/sync",
+          {
+            zone: getZone.zone,
+          }
+        ).then(function (response) {
+          console.log(response.data.data);
+          vm.zones[index]=response.data.data.zone;
+          vm.$toasted.show('Zone Sync Successfully.', {
+            type: 'success',
+            icon: 'fa-exclamation-triangle'
+          });
+        })
+          .catch((response) => {
+            console.log(response);
+            vm.$toasted.show('Something wrong  Try again.', {
+              type: 'error',
+              icon: 'fa-exclamation-triangle'
+            });
+          });
+      }
+
     },
   };
 </script>
