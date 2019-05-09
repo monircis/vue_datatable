@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import setting from '@/components/setting';
 import serverlists from '@/components/server_lists';
 import dropletdetails from '@/components/droplet_details';
 import newLinkedinProfile from '@/components/linkedin_profile_create';
@@ -33,6 +34,12 @@ export default new Router({
       path: '/linkedin-profile',
       name: 'linkedin-profile',
       component: newLinkedinProfile,
+      root:  '/'
+    },
+    {
+      path: '/setting',
+      name: 'setting',
+      component: setting,
       root:  '/'
     },
     {

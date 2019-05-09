@@ -18,6 +18,12 @@
             </router-link>
           </li>
           <li>
+            <router-link v-bind:to="'/setting'" v-on:click="setActive('setting')" :class="{ active: isActive('setting') }">
+              <img src="@/assets/images/settings.png" height="30px"/>
+              <span class="menu-text menu-text__overwrite mt5">Setting</span>
+            </router-link>
+          </li>
+          <li>
             <router-link v-bind:to="'/proxy-zone-list'" v-on:click="setActive('proxy-zone-list')" :class="{ active: isActive('proxy-zone-list') }">
               <img src="@/assets/images/placeholder.png" height="30px"/>
               <span class="menu-text menu-text__overwrite mt5">Proxy Zone</span>
@@ -39,7 +45,7 @@
           </li>
           <li>
             <router-link v-bind:to="'/blacklisted-proxy'" v-on:click="setActive('blacklisted-proxy')" :class="{ active: isActive('blacklisted-proxy') }" >
-              <img src="@/assets/images/database.png" height="25px"/>
+              <img src="@/assets/images/519151.png" height="30px"/>
               <span title="Blacklisted Proxies" class="menu-text menu-text__overwrite mt5">Blacklisted Proxies</span>
             </router-link>
           </li>

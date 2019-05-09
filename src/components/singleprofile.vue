@@ -50,7 +50,7 @@
           <input type="text" class="form-control" v-model="profileDetail.country" readonly="">
         </div><!--end single-->
       </div>
-      <div class="col-md-12">
+      <div class="col-md-5">
         <div class="form-group">
           <label>
             Proxy:
@@ -58,6 +58,28 @@
           <input type="text" class="form-control" v-model="profileDetail.proxy_ip"  disabled>
         </div><!--end single-->
       </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>
+            Session Created At:
+          </label>
+          <input type="text" class="form-control" v-model="profileDetail.sessionCreatedAt"  disabled>
+        </div><!--end single-->
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>
+            &nbsp;
+          </label>
+          <button class="btn btn-danger btn-xs btn-block" @click="clearSession" v-if="profileDetail.sessionCreatedAt" >
+            Clear Session
+          </button>
+          <button class="btn btn-reset btn-xs btn-block black-text disabled" v-else >
+            Clear Session
+          </button>
+        </div><!--end single-->
+      </div>
+
     </div>
     <div class="action-footer mt15">
       <button class="btn btn-danger btn-xs pull-left" @click="removeProxy" v-if="profileDetail.proxy_ip.length">
@@ -134,6 +156,7 @@
         let vm = this;
         // let getProfile = this.profileDetail;
         // console.log(getProfile);
+        vm.$parent.startLoading();
         axios.post(this.globalUrl+"/proxy/assign-proxy",
           {
             profileId: this.$route.params.id
@@ -156,8 +179,7 @@
       },
       removeProxy: function () {
         let vm = this;
-        // let getProfile = this.profileDetail[index];
-        // console.log(getProfile);
+        vm.$parent.startLoading();
         axios.post(this.globalUrl+"/proxy/remove-proxy",
           {
             profileId: this.$route.params.id
@@ -171,6 +193,28 @@
           .catch((response) => {
             console.log(response);
             vm.$parent.endLoading();
+            vm.$toasted.show('Something wrong  Try again.', {
+              type: 'error',
+              icon: 'fa-exclamation-triangle'
+            });
+          });
+      },
+      clearSession: function () {
+        let vm = this;
+        axios.post(this.globalUrl+"/task/remove-session",
+          {
+            profileId: this.$route.params.id
+          }
+        ).then(function (response) {
+          console.log(response.data.data);
+          vm.profileDetail.sessionCreatedAt='';
+          vm.$toasted.show('Session Clear Successfully.', {
+            type: 'success',
+            icon: 'fa-exclamation-triangle'
+          });
+        })
+          .catch((response) => {
+            console.log(response);
             vm.$toasted.show('Something wrong  Try again.', {
               type: 'error',
               icon: 'fa-exclamation-triangle'
