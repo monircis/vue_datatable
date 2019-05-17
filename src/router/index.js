@@ -11,6 +11,7 @@ import createProxyZone from '@/components/proxy_zone_create';
 import ProxyZoneList from '@/components/proxy_zone_list';
 import blacklistedProxy from '@/components/blacklisted_proxys';
 import singlezone from '@/components/single_zone';
+import tasks from '@/components/tasks';
 import login from '@/components/login';
 import VueSweetalert2 from 'vue-sweetalert2';
 Vue.use(VueSweetalert2);
@@ -83,6 +84,12 @@ export default new Router({
       path: '/single-zone/:id',
       name: 'single-zone',
       component: singlezone,
+      root:  '/'
+    },
+    {
+      path: '/tasks',
+      name: 'tasks',
+      component: tasks,
       root:  '/'
     },
     {

@@ -49,6 +49,12 @@
               <span title="Blacklisted Proxies" class="menu-text menu-text__overwrite mt5">Blacklisted Proxies</span>
             </router-link>
           </li>
+          <li>
+            <router-link v-bind:to="'/tasks'" v-on:click="setActive('tasks')" :class="{ active: isActive('tasks') }" >
+              <img src="@/assets/images/list.png" height="30px"/>
+              <span title="Blacklisted Proxies" class="menu-text menu-text__overwrite mt5">Tasks</span>
+            </router-link>
+          </li>
 
         </ul>
       </div>

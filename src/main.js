@@ -11,7 +11,9 @@ import Toasted from 'vue-toasted';
 import VueLodash from 'vue-lodash';
 import moment from 'moment';
 import VueSweetalert from 'vue-sweetalert2';
+import VueClipboard from 'vue-clipboard2';
 
+Vue.use(VueClipboard);
 Vue.filter('formatDate', function (value) {
   if (value) {
     return moment(String(value)).format('LL');

@@ -100,6 +100,7 @@
   import axios from 'axios';
   const $ = require('jquery');
   window.$ = $;
+
   export default {
     data() {
       return {
@@ -108,6 +109,11 @@
     },
     mounted: function () {
       this.singleProfileDetails();
+    },
+    computed: {
+      placeholder: function() {
+        return  'ok';
+      }
     },
     methods: {
       singleProfileDetails: function () {

@@ -18,11 +18,14 @@
             <thead>
             <tr>
               <th>#</th>
-              <th>Linkedin Email</th>
+              <th>LinkedIn Email</th>
               <th>Country</th>
               <th>Proxy IP</th>
               <th width="120px"></th>
+              <th>Copy</th>
+              <th width="100px">Autopilot</th>
               <th>Action</th>
+              <th width="30px">Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -44,18 +47,25 @@
                   Assign Proxy
                 </button>
 
-                <!--<div v-if="hasIP(Profile)">-->
-                <!--ok-->
-                <!--</div>-->
-                <!--<div v-else>-->
-                <!--none-->
-                <!--</div>-->
+              </td>
+              <td>
+                <button type="button" class="btn btn-configure btn-sm  black-text" @click="doCopy(index)">Copy</button>
+              </td>
+              <td>
+                <div class="switch">
+                  <label>
+                     Off
+                    <input type="checkbox" v-model="Profile.autopilot" @change="autopilotMode(index)">
+                    <span class="lever"></span> On
+                  </label>
+                </div>
               </td>
               <td width="40px" class="text-center">
                 <router-link v-bind:to="'single-profile/'+Profile._id">
                   <span><i aria-hidden="true" class="fa fa-location-arrow size"></i></span>
                 </router-link>
               </td>
+              <td class="text-center"><a @click="removeProfile(index)" href="#" class="red-text" ><i class="fa fa-trash-o"></i></a></td>
             </tr>
             </tbody>
           </table>
@@ -121,6 +131,7 @@
               <th>Proxy IP</th>
               <th width="120px"></th>
               <th>Action</th>
+
             </tr>
             </thead>
             <tbody>
@@ -142,18 +153,13 @@
                   Assign Proxy
                 </button>
 
-                <!--<div v-if="hasIP(Profile)">-->
-                <!--ok-->
-                <!--</div>-->
-                <!--<div v-else>-->
-                <!--none-->
-                <!--</div>-->
               </td>
               <td width="40px" class="text-center">
                 <router-link v-bind:to="'single-profile/'+Profile._id">
                   <span><i aria-hidden="true" class="fa fa-location-arrow size"></i></span>
                 </router-link>
               </td>
+
             </tr>
             </tbody>
           </table>
@@ -181,6 +187,21 @@
     computed: {
     },
     methods: {
+      doCopy: function (index) {
+        let  vm  =this;
+        let profileId = this.linkedinProfiles[index]._id;
+        let  command = "node app.js fix --profileId='"+profileId+"'";
+        this.$copyText(command).then(function (e) {
+          vm.$toasted.show('Command copied!', {
+            type: 'success',
+            icon: 'fa-exclamation-triangle'
+          });
+          console.log(e)
+        }, function (e) {
+          alert('Can not copy')
+          console.log(e)
+        })
+      },
       loadApiData: function () {
         let vm = this;
         vm.$parent.startLoading();
@@ -207,6 +228,7 @@
             });
           });
       },
+
       assignProxy: function (index) {
         let vm = this;
         let getProfile = this.linkedinProfiles[index];
@@ -229,6 +251,7 @@
             });
           });
       },
+
       removeProxy: function (index) {
         let vm = this;
         let getProfile = this.linkedinProfiles[index];
@@ -246,6 +269,54 @@
           .catch((response) => {
             console.log(response);
             vm.$parent.endLoading();
+            vm.$toasted.show('Something wrong  Try again.', {
+              type: 'error',
+              icon: 'fa-exclamation-triangle'
+            });
+          });
+      },
+
+      autopilotMode: function (index) {
+        let vm = this;
+        let getProfileId = this.linkedinProfiles[index]._id;
+        let status = this.linkedinProfiles[index].autopilot;
+        console.log(status);
+        axios.post(this.globalUrl+"/profile/update-autopilot-mode",
+          {
+            profileId: getProfileId,
+            autopilot: status,
+          }
+        ).then(function (response) {
+          vm.$toasted.show('Mode changed.', {
+            type: 'success',
+            icon: 'fa-exclamation-triangle'
+          });
+        })
+          .catch((response) => {
+            console.log(response);
+            vm.$toasted.show('Something wrong  Try again.', {
+              type: 'error',
+              icon: 'fa-exclamation-triangle'
+            });
+          });
+      },
+
+      removeProfile: function (index) {
+        let vm = this;
+        let getProfileId = this.linkedinProfiles[index]._id;
+        //console.log(getProfile);
+        axios.post(this.globalUrl+"/profile/delete-profile",
+          {
+            profileId: getProfileId,
+          }
+        ).then(function (response) {
+          vm.$toasted.show('Successfully removed.', {
+            type: 'success',
+            icon: 'fa-exclamation-triangle'
+          });
+        })
+          .catch((response) => {
+            console.log(response);
             vm.$toasted.show('Something wrong  Try again.', {
               type: 'error',
               icon: 'fa-exclamation-triangle'
