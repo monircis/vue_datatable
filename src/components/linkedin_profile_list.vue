@@ -232,7 +232,7 @@
       assignProxy: function (index) {
         let vm = this;
         let getProfile = this.linkedinProfiles[index];
-        axios.post(this.globalUrl+"/proxy/assign-proxy",
+        axios.post(this.globalUrl+"/profile/assign-proxy",
           {
             profileId: getProfile._id,
           }
@@ -256,7 +256,7 @@
         let vm = this;
         let getProfile = this.linkedinProfiles[index];
         console.log(getProfile);
-        axios.post(this.globalUrl+"/proxy/remove-proxy",
+        axios.post(this.globalUrl+"/profile/remove-proxy",
           {
             profileId: getProfile._id,
           }

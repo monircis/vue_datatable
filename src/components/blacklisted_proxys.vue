@@ -53,7 +53,7 @@
         var vm = this;
         //start loading
         vm.$parent.startLoading();
-        axios.get(this.globalUrl+"/proxy/black-list-proxy")
+        axios.get(this.globalUrl+"/proxy/black-listed-proxy")
           .then(function (response) {
             vm.proxys =response.data.data;
             //end loading

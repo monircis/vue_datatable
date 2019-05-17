@@ -15,6 +15,7 @@
           <table class="table table-bordered">
             <thead>
             <tr>
+              <th>Zone</th>
               <th>Proxy</th>
               <th>Country</th>
               <th>Status</th>
@@ -24,6 +25,7 @@
             </thead>
             <tbody>
             <tr v-for="(proxy,index) in proxys">
+              <td>{{ proxy.zone }}</td>
               <td>{{ proxy.ip }}</td>
               <td>{{ proxy.country }}</td>
               <td>{{ proxy.active }}</td>
@@ -47,6 +49,7 @@
           <table class="table table-bordered">
             <thead>
             <tr>
+              <th>Zone</th>
               <th>Proxy</th>
               <th>Country</th>
               <th>Status</th>
@@ -56,6 +59,7 @@
             </thead>
             <tbody>
             <tr v-for="(proxy , index) in proxys" v-if="proxy.active">
+              <td>{{ proxy.zone }}</td>
               <td>{{ proxy.ip }}</td>
               <td>{{ proxy.country }}</td>
               <td>{{ proxy.active }}</td>
@@ -76,6 +80,7 @@
           <table class="table table-bordered">
             <thead>
             <tr>
+              <th>Zone</th>
               <th>Proxy</th>
               <th>Country</th>
               <th>Status</th>
@@ -84,6 +89,7 @@
             </thead>
             <tbody>
             <tr v-for="proxy in proxys" v-if="!proxy.active">
+              <td>{{ proxy.zone }}</td>
               <td>{{ proxy.ip }}</td>
               <td>{{ proxy.country }}</td>
               <td>{{ proxy.active }}</td>

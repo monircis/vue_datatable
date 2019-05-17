@@ -55,10 +55,9 @@
     },
     created: async function () {
       this.loadApiData();
-
-      setInterval(() => {
-        this.loadApiData();
-      }, 10000)
+      // setInterval(() => {
+      //   this.loadApiData();
+      // }, 10000)
     },
     methods: {
       loadApiData: function () {

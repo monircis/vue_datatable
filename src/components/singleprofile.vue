@@ -184,7 +184,7 @@
         // let getProfile = this.profileDetail;
         // console.log(getProfile);
         vm.$parent.startLoading();
-        axios.post(this.globalUrl + "/proxy/assign-proxy",
+        axios.post(this.globalUrl + "/profile/assign-proxy",
           {
             profileId: this.$route.params.id
           }
@@ -207,7 +207,7 @@
       removeProxy: function () {
         let vm = this;
         vm.$parent.startLoading();
-        axios.post(this.globalUrl + "/proxy/remove-proxy",
+        axios.post(this.globalUrl + "/profile/remove-proxy",
           {
             profileId: this.$route.params.id
           }

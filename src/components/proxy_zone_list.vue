@@ -37,7 +37,7 @@
               </td>
               <td>
                 <div>
-                  <router-link class="btn btn-configure btn-sm"  v-bind:to="'/single-zone/'+zone._id">IPs
+                  <router-link class="btn btn-configure btn-sm"  v-bind:to="'/single-zone/'+zone.zone">IPs
                   </router-link>
                 </div>
               </td>

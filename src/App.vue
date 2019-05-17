@@ -15,7 +15,7 @@
                           aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-bars pdr10">
                     </i>
-                    Server Management Web App
+                    Automation  command center
                   </button>
                   <div class="dropdown-menu  no-padding ">
                   </div>
