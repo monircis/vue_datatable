@@ -72,6 +72,7 @@
             id: getProfileId,
           }
         ).then(function (response) {
+          vm.proxys.splice(index, 1);
           vm.$toasted.show('Successfully unblock.', {
             type: 'success',
             icon: 'fa-exclamation-triangle'

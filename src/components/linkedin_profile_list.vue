@@ -310,6 +310,7 @@
             profileId: getProfileId,
           }
         ).then(function (response) {
+          vm.linkedinProfiles.splice(index, 1);
           vm.$toasted.show('Successfully removed.', {
             type: 'success',
             icon: 'fa-exclamation-triangle'

@@ -1,12 +1,10 @@
 <template>
 
   <div class="form-modal form-block dropletarea">
-    <code>
-      {{ tasks }}
-    </code>
-<br>
-<br>
-<br>
+    <!--<code>-->
+      <!--{{ tasks }}-->
+    <!--</code>-->
+
     <div class="tp-area">
       <h3 class="pull-left">Task List </h3>
     </div>
