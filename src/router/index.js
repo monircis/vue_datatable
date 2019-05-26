@@ -16,6 +16,7 @@ import login from '@/components/login';
 import VueSweetalert2 from 'vue-sweetalert2';
 Vue.use(VueSweetalert2);
 Vue.use(Router);
+
 export default new Router({
   //mode: 'history',//this  is  for  remove #  from  url
   routes: [
