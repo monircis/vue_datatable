@@ -4,6 +4,7 @@
     <div class="outer-wrapper">
       <!-- Bootstrap core CSS -->
       <!-- Material Design Bootstrap -->
+	  
       <!--<header class="header-area white-bg nonprint-area" v-if="username">-->
       <header class="header-area white-bg nonprint-area">
         <div class="container-fluid">
@@ -15,6 +16,7 @@
                           aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-bars pdr10">
                     </i>
+					
                     Automation  command center
                   </button>
                   <div class="dropdown-menu  no-padding ">

@@ -8,7 +8,6 @@
         <li><a data-toggle="tab" href="#inactive">Inactive</a></li>
       </ul>
     </div>
-
     <div class="tab-content">
       <div id="all" class="tab-pane fade in active">
         <div class="table-responsive droplets mt15">
@@ -105,11 +104,8 @@
         </div>
       </div>
     </div>
-
   </div>
-
 </template>
-
 <script>
   import axios from 'axios';
   const $ = require('jquery');
@@ -168,4 +164,3 @@
     },
   };
 </script>
-

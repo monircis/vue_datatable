@@ -3,27 +3,26 @@ import Router from 'vue-router';
 import setting from '@/components/setting';
 import serverlists from '@/components/server_lists';
 import dropletdetails from '@/components/droplet_details';
-import newLinkedinProfile from '@/components/linkedin_profile_create';
-import LinkedinProfileLists from '@/components/linkedin_profile_list';
-import singleProfile from '@/components/singleprofile';
+import newlinkedinprofile from '@/components/linkedin_profile_create';
+import linkedinprofilelists from '@/components/linkedin_profile_list';
+import singleprofile from '@/components/singleprofile';
 import proxy from '@/components/proxys';
-import createProxyZone from '@/components/proxy_zone_create';
-import ProxyZoneList from '@/components/proxy_zone_list';
-import blacklistedProxy from '@/components/blacklisted_proxys';
+import createproxyzone from '@/components/proxy_zone_create';
+import proxyzonelist from '@/components/proxy_zone_list';
+import blacklistedproxy from '@/components/blacklisted_proxys';
 import singlezone from '@/components/single_zone';
 import tasks from '@/components/tasks';
 import login from '@/components/login';
 import VueSweetalert2 from 'vue-sweetalert2';
 Vue.use(VueSweetalert2);
 Vue.use(Router);
-
 export default new Router({
   //mode: 'history',//this  is  for  remove #  from  url
   routes: [
     {
       path: '/',
       name: 'Home',
-      component: LinkedinProfileLists,
+      component: linkedinprofilelists,
       root:  '/'
     },
     {
@@ -35,7 +34,7 @@ export default new Router({
     {
       path: '/linkedin-profile',
       name: 'linkedin-profile',
-      component: newLinkedinProfile,
+      component: newlinkedinprofile,
       root:  '/'
     },
     {
@@ -53,7 +52,7 @@ export default new Router({
     {
       path: '/single-profile/:id',
       name: 'single-profile',
-      component: singleProfile,
+      component: singleprofile,
       root:  '/'
     },
     {
@@ -65,19 +64,19 @@ export default new Router({
     {
       path: '/proxy-zone',
       name: 'proxy-zone',
-      component: createProxyZone,
+      component: createproxyzone,
       root:  '/'
     },
     {
       path: '/proxy-zone-list',
       name: 'proxy-zone-list',
-      component: ProxyZoneList,
+      component: proxyzonelist,
       root:  '/'
     },
     {
       path: '/blacklisted-proxy',
       name: 'blacklisted-proxy',
-      component: blacklistedProxy,
+      component: blacklistedproxy,
       root:  '/'
     },
 
