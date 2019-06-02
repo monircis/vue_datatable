@@ -12,7 +12,6 @@ import VueLodash from 'vue-lodash';
 import moment from 'moment';
 import VueSweetalert from 'vue-sweetalert2';
 import VueClipboard from 'vue-clipboard2';
-
 Vue.use(VueClipboard);
 Vue.filter('formatDate', function (value) {
   if (value) {
@@ -25,7 +24,6 @@ Vue.filter('formatDateWithoutTime', function (value) {
   }
 });
 Vue.config.productionTip = false;
-
 //global variable
 Vue.mixin({
   data() {
