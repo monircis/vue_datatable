@@ -47,7 +47,7 @@
 
               </td>
               <td>
-                <button type="button" class="btn btn-configure btn-sm  black-text disabled" v-bind:class="{ enabled: Profile.autopilot }"  @click="doCopy(index)">Copy command</button>
+                <button type="button" class="btn btn-configure btn-sm  black-text " v-bind:class="[Profile.autopilot ? 'disabled' : ' ']"  @click="doCopy(index)">Copy command</button>
               </td>
               <td>
                 <div class="switch">

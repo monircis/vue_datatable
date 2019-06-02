@@ -9167,3 +9167,9 @@ input:focus {
   color: #1976d2;
   border: 1px solid #1976d2;
 }
+button.disable{
+    cursor: not-allowed;
+}
+button.disable.enabled{
+    cursor: pointer;
+}
