@@ -17,12 +17,12 @@
           <table class="table table-bordered">
             <thead>
             <tr>
-              <th>#</th>
+               
               <th>LinkedIn Email</th>
               <th>Country</th>
               <th>Proxy IP</th>
               <th width="120px"></th>
-              <th>Copy</th>
+              <th>Debug Command</th>
               <th width="100px">Autopilot</th>
               <th>Action</th>
               <th width="30px">Delete</th>
@@ -30,9 +30,7 @@
             </thead>
             <tbody>
             <tr v-for="(Profile ,index) in linkedinProfiles">
-              <td class="text-center" width="60px">
-                <img class="img-circle img-thumbnail pull-left" :src="url + (index + 1)"/>
-              </td>
+               
               <td>{{ Profile.linkedinEmail}}</td>
               <td>{{ Profile.country }}</td>
               <td class="text-left" :id="'Proxy_Id_'+Profile._id">
@@ -49,7 +47,7 @@
 
               </td>
               <td>
-                <button type="button" class="btn btn-configure btn-sm  black-text" @click="doCopy(index)">Copy</button>
+                <button type="button" class="btn btn-configure btn-sm  black-text disabled" v-bind:class="{ enabled: Profile.autopilot }"  @click="doCopy(index)">Copy command</button>
               </td>
               <td>
                 <div class="switch">
