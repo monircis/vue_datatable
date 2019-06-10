@@ -15,9 +15,10 @@ import VueClipboard from 'vue-clipboard2';
 Vue.use(VueClipboard);
 Vue.filter('formatDate', function (value) {
   if (value) {
-    return moment(String(value)).format('LL');
+    return moment(String(value)).format('LLL');
   }
 });
+
 Vue.filter('formatDateWithoutTime', function (value) {
   if (value) {
     return moment(String(value)).format('LL');

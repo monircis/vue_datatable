@@ -13,7 +13,7 @@
             <thead>
             <tr>
               <th>Proxy</th>
-              <th>Created At</th>
+              <th>Blacklisted At</th>
               <th width="120px" class="text-center">Action</th>
             </tr>
             </thead>

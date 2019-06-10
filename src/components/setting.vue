@@ -35,6 +35,7 @@
 
     </div>
     <div class="action-footer mt15">
+	<span class="pull-left">Note: Delays are in seconds. </span>
       <button class="btn base-bg" @click="updateSetting" value="submit">
         Update  Now
       </button>

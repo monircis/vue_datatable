@@ -121,7 +121,7 @@
               //console.log(response);
             });
         }else{
-          vm.$toasted.show('Please Fill all fields', {
+          vm.$toasted.show('Please fill all fields', {
             type: 'error',
             icon: 'fa-exclamation-triangle'
           });

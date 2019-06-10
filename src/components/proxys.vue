@@ -17,9 +17,10 @@
               <th>Zone</th>
               <th>Proxy</th>
               <th>Country</th>
-              <th>Status</th>
-              <th width="120px"></th>
+              <!--<th>Status</th>-->
               <th width="120px">Profile Url</th>
+              <th width="120px"></th>
+
             </tr>
             </thead>
             <tbody>
@@ -27,17 +28,18 @@
               <td>{{ proxy.zone }}</td>
               <td>{{ proxy.ip }}</td>
               <td>{{ proxy.country }}</td>
-              <td>{{ proxy.active }}</td>
+              <!--<td>{{ proxy.active }}</td>-->
+              <td>
+                <div v-if="proxy.profileId">
+                  <router-link class="btn btn-configure btn-info btn-sm" v-bind:to="'single-profile/'+proxy.profileId">Connected Profile <i aria-hidden="true" class="fa fa-external-link fa-1x"></i>
+                  </router-link>
+                </div>
+              </td>
               <td>
                 <button class="btn btn-danger btn-sm" @click="blacklist(index)">Blacklist
                 </button>
               </td>
-              <td>
-                <div v-if="proxy.profileId">
-                  <router-link class="btn btn-configure btn-sm" v-bind:to="'single-profile/'+proxy.profileId">Connected Profile
-                  </router-link>
-                </div>
-              </td>
+
             </tr>
             </tbody>
           </table>

@@ -21,7 +21,6 @@
               <th>LinkedIn Email</th>
               <th>Country</th>
               <th>Proxy IP</th>
-              <th width="120px"></th>
               <th>Debug Command</th>
               <th width="100px">Autopilot</th>
               <th>Action</th>
@@ -34,18 +33,15 @@
               <td>{{ Profile.linkedinEmail}}</td>
               <td>{{ Profile.country }}</td>
               <td class="text-left" :id="'Proxy_Id_'+Profile._id">
-                {{ Profile.proxy_ip }}
-              </td>
-              <td>
-
-                <button class="btn btn-danger btn-xs" :id="'remove_'+Profile._id" @click="removeProxy(index)" v-if="Profile.proxy_ip.length">
-                  Remove Proxy
-                </button>
-                <button class="btn base-bg btn-xs" :id="'assign_'+Profile._id" @click="assignProxy(index)" v-else>
+			  <div v-if="Profile.proxy_ip.length">
+			  {{ Profile.proxy_ip }}  <i :id="'remove_'+Profile._id" @click="removeProxy(index)" class="fa fa-times-circle-o red-text" aria-hidden="true"></i>
+			  </div>
+			   <button class="btn base-bg btn-xs" :id="'assign_'+Profile._id" @click="assignProxy(index)" v-else>
                   Assign Proxy
                 </button>
-
+                
               </td>
+              
               <td>
                 <button type="button" class="btn btn-configure btn-sm  black-text " v-bind:class="[Profile.autopilot ? 'disabled' : ' ']"  @click="doCopy(index)">Copy command</button>
               </td>
@@ -60,7 +56,7 @@
               </td>
               <td width="40px" class="text-center">
                 <router-link v-bind:to="'single-profile/'+Profile._id">
-                  <span><i aria-hidden="true" class="fa fa-location-arrow size"></i></span>
+                  <span><i aria-hidden="true" class="fa fa-external-link size"></i></span>
                 </router-link>
               </td>
               <td class="text-center"><a @click="removeProfile(index)" href="#" class="red-text" ><i class="fa fa-trash-o"></i></a></td>

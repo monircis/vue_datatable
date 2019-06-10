@@ -23,7 +23,7 @@
         <tr v-for="(task ,index) in tasks">
           <td>{{ task.machine }}</td>
           <td>{{ task.task}}</td>
-          <td>{{ task.updatedAt }}</td>
+          <td>{{ task.updatedAt  }}</td>
           <td class="text-center">
             <button class="btn btn-success btn-xs" v-if="task.status">
               True

@@ -1,11 +1,10 @@
 <template>
   <div class="form-modal form-block dropletarea">
     <div class="tp-area">
-      <h3 class="pull-left">Proxy IPs  For: <b class="base-color">{{ zoneName }}</b></h3>
+      <h3 class="pull-left">Proxy Zone: <b class="base-color">{{ zoneName }}</b><br>Zone Country: <b class="base-color">{{ zoneCountry }}</b></h3>
       <router-link class="btn  base-bg ml30   pull-right" v-bind:to="'/proxy-zone-list'">Proxy Zone List
       </router-link>
     </div>
-
     <div class="tab-content">
       <div id="all" class="tab-pane fade in active">
         <div class="table-responsive droplets mt15">
@@ -13,27 +12,25 @@
             <thead>
             <tr>
               <th>IP</th>
-              <th>Country</th>
-
-              <th width="100px"></th>
               <th width="120px">Profile Url</th>
+              <th width="100px"></th>
+            
             </tr>
             </thead>
             <tbody>
             <tr v-for="(ip, index) in ips">
               <td>{{ ip.ip }}</td>
-              <td>{{ ip.country }}</td>
-
+              <td>
+                <div v-if="ip.profileId">
+                  <router-link class="btn btn-configure btn-info btn-sm" v-bind:to="'/single-profile/'+ip.profileId">Connected Profile <i aria-hidden="true" class="fa fa-external-link fa-1x"></i>
+                  </router-link>
+                </div>
+              </td>
               <td>
                 <button class="btn btn-danger btn-sm" @click="blacklist(index)">Blacklist
                 </button>
               </td>
-              <td>
-                <div v-if="ip.profileId">
-                  <router-link class="btn btn-configure btn-sm" v-bind:to="'/single-profile/'+ip.profileId">Connected Profile
-                  </router-link>
-                </div>
-              </td>
+              
             </tr>
             </tbody>
           </table>
@@ -54,6 +51,7 @@
     data() {
       return {
         zoneName:'',
+        zoneCountry:'',
         ips: [],
       }
     },
@@ -73,6 +71,7 @@
             console.log(response.data.data);
             vm.ips =response.data.data;
             vm.zoneName =response.data.data[0].zone;
+            vm.zoneCountry =response.data.data[0].country;
             //end loading
             vm.$parent.endLoading();
           })

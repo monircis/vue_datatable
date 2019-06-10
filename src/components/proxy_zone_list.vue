@@ -2,7 +2,7 @@
   <div class="form-modal form-block dropletarea">
     <div class="tp-area">
       <h3 class="pull-left">Proxy List</h3>
-      <router-link class="btn  base-bg ml30   pull-right" v-bind:to="'/proxy-zone'">Create New
+      <router-link class="btn  base-bg ml30   pull-right" v-bind:to="'/proxy-zone'">Create New Zone
       </router-link>
       <!--<ul class="nav nav-tabs pull-right">-->
         <!--<li class="active"><a data-toggle="tab" href="#all">All</a></li>-->
@@ -32,7 +32,7 @@
               <td>{{ zone.pool_size }}</td>
               <td>{{ zone.country }}</td>
               <td>
-                <button type="button" class="btn btn-configure btn-sm black-text" @click="sync_zone(index)">Sync Now
+                <button type="button" class="btn btn-configure btn-sm black-text" @click="sync_zone(index)">Sync Zone
                 </button>
               </td>
               <td>
