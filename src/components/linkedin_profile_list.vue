@@ -10,8 +10,20 @@
         <li><a data-toggle="tab" href="#Assigned">Assigned</a></li>
         <li><a data-toggle="tab" href="#Unassigned">Unassigned</a></li>
       </ul>
+    </div>
 
-    </div>  <datatable :columns="columns" :data="rows"></datatable>
+    <br><br><br><br><br><br>
+    <div class="form-group">
+      <label  class="sr-only">Filter</label>
+      <input type="text" class="form-control" v-model="columns.field" placeholder="Filter">
+    </div>
+
+    <datatable :columns="columns" :data="rows" :filter-by="columns.field"></datatable>
+    <div class="col-xs-12 form-inline">
+      <datatable-pager v-model="page" type="abbreviated" :per-page="per_page"></datatable-pager>
+    </div>
+    <br><br><br><br><br><br><br>
+
     <div class="tab-content">
       <div id="all" class="tab-pane fade in active">
         <div class="table-responsive droplets mt15">
