@@ -13,6 +13,8 @@ import moment from 'moment';
 import VueSweetalert from 'vue-sweetalert2';
 import VueClipboard from 'vue-clipboard2';
 Vue.use(VueClipboard);
+import DatatableFactory from 'vuejs-datatable/dist/vuejs-datatable.esm.js';
+Vue.use(DatatableFactory);
 Vue.filter('formatDate', function (value) {
   if (value) {
     return moment(String(value)).format('LLL');
