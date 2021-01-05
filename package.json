@@ -14,7 +14,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bootstrap-css-only": "^4.2.1",
     "bootstrap-datepicker": "^1.8.0",
     "bootstrap-timepicker": "^0.5.2",
